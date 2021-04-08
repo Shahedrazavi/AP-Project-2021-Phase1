@@ -1,32 +1,41 @@
 package Models;
 
-import java.util.Date;
+import Classes.IntHolder;
+
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-public class Tweet {
+public class Tweet implements SavedMessage {
+    public static String lastID;
+
     private String ID;
     private String text;
-    private Date date;
+    private LocalDateTime date;
 
     private LinkedList<String> likes;
-    private int likeNumber;
+    private IntHolder likeNumber;
     private LinkedList<String> retweets;
-    private int retweetNumber;
+    private IntHolder retweetNumber;
     private LinkedList<String> spamReports;
-    private int spamReportNumber;
+    private IntHolder spamReportNumber;
 
     private String userID;
     private String ownerID;
     private String parentTweetID;
     private LinkedList<String> subTweets;
+
+
+    private String sourceTweetID;
+    private LocalDateTime retweetDate;
     private boolean isRetweeted;
 
-    public Tweet(String ID, String text, Date date,
-                 LinkedList<String> likes, int likeNumber,
-                 LinkedList<String> retweets, int retweetNumber,
-                 LinkedList<String> spamReports, int spamReportNumber,
+    public Tweet(String ID, String text, LocalDateTime date,
+                 LinkedList<String> likes, IntHolder likeNumber,
+                 LinkedList<String> retweets, IntHolder retweetNumber,
+                 LinkedList<String> spamReports, IntHolder spamReportNumber,
                  String userID,
-                 String ownerID, String parentTweetID, LinkedList<String> subTweets, boolean isRetweeted) {
+                 String ownerID, String parentTweetID, LinkedList<String> subTweets,
+                 String sourceTweetID, LocalDateTime retweetDate, boolean isRetweeted) {
         this.ID = ID;
         this.text = text;
         this.date = date;
@@ -40,25 +49,30 @@ public class Tweet {
         this.ownerID = ownerID;
         this.parentTweetID = parentTweetID;
         this.subTweets = subTweets;
+        this.sourceTweetID = sourceTweetID;
+        this.retweetDate = retweetDate;
         this.isRetweeted = isRetweeted;
     }
 
     static class TweetBuilder{
         private String ID;
         private String text;
-        private Date date;
+        private LocalDateTime date;
 
         private LinkedList<String> likes;
-        private int likeNumber;
+        private IntHolder likeNumber;
         private LinkedList<String> retweets;
-        private int retweetNumber;
+        private IntHolder retweetNumber;
         private LinkedList<String> spamReports;
-        private int spamReportNumber;
+        private IntHolder spamReportNumber;
 
         private String userID;
         private String ownerID;
         private String parentTweetID;
         private LinkedList<String> subTweets;
+
+        private String sourceTweetID;
+        private LocalDateTime retweetDate;
         private boolean isRetweeted;
 
         public TweetBuilder setID(String ID) {
@@ -71,7 +85,7 @@ public class Tweet {
             return this;
         }
 
-        public TweetBuilder setDate(Date date) {
+        public TweetBuilder setDate(LocalDateTime date) {
             this.date = date;
             return this;
         }
@@ -81,7 +95,7 @@ public class Tweet {
             return this;
         }
 
-        public TweetBuilder setLikeNumber(int likeNumber) {
+        public TweetBuilder setLikeNumber(IntHolder likeNumber) {
             this.likeNumber = likeNumber;
             return this;
         }
@@ -91,7 +105,7 @@ public class Tweet {
             return this;
         }
 
-        public TweetBuilder setRetweetNumber(int retweetNumber) {
+        public TweetBuilder setRetweetNumber(IntHolder retweetNumber) {
             this.retweetNumber = retweetNumber;
             return this;
         }
@@ -101,7 +115,7 @@ public class Tweet {
             return this;
         }
 
-        public TweetBuilder setSpamReportNumber(int spamReportNumber) {
+        public TweetBuilder setSpamReportNumber(IntHolder spamReportNumber) {
             this.spamReportNumber = spamReportNumber;
             return this;
         }
@@ -126,6 +140,16 @@ public class Tweet {
             return this;
         }
 
+        public TweetBuilder setRetweetDate(LocalDateTime retweetDate) {
+            this.retweetDate = retweetDate;
+            return this;
+        }
+
+        public TweetBuilder setSourceTweetID(String sourceTweetID) {
+            this.sourceTweetID = sourceTweetID;
+            return this;
+        }
+
         public TweetBuilder setRetweeted(boolean retweeted) {
             isRetweeted = retweeted;
             return this;
@@ -141,8 +165,230 @@ public class Tweet {
                     retweets, retweetNumber,
                     spamReports, spamReportNumber,
                     userID,
-                    ownerID, parentTweetID, subTweets, isRetweeted);
+                    ownerID, parentTweetID, subTweets,
+                    sourceTweetID, retweetDate, isRetweeted);
 //            return new Tweet(ID, text, likes, likeNumber, retweets, retweetNumber, userID, ownerID, parentTweetID, isRetweeted);
         }
     }
+
+
+
+    /**
+     * Getters and Setters
+     */
+
+
+    public static String getLastID() {
+        return lastID;
+    }
+
+    public static void setLastID(String lastID) {
+        Tweet.lastID = lastID;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public LinkedList<String> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(LinkedList<String> likes) {
+        this.likes = likes;
+    }
+
+    public IntHolder getLikeNumber() {
+        return likeNumber;
+    }
+
+    public void setLikeNumber(IntHolder likeNumber) {
+        this.likeNumber = likeNumber;
+    }
+
+    public LinkedList<String> getRetweets() {
+        return retweets;
+    }
+
+    public void setRetweets(LinkedList<String> retweets) {
+        this.retweets = retweets;
+    }
+
+    public IntHolder getRetweetNumber() {
+        return retweetNumber;
+    }
+
+    public void setRetweetNumber(IntHolder retweetNumber) {
+        this.retweetNumber = retweetNumber;
+    }
+
+    public LinkedList<String> getSpamReports() {
+        return spamReports;
+    }
+
+    public void setSpamReports(LinkedList<String> spamReports) {
+        this.spamReports = spamReports;
+    }
+
+    public IntHolder getSpamReportNumber() {
+        return spamReportNumber;
+    }
+
+    public void setSpamReportNumber(IntHolder spamReportNumber) {
+        this.spamReportNumber = spamReportNumber;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
+    }
+
+    public String getParentTweetID() {
+        return parentTweetID;
+    }
+
+    public void setParentTweetID(String parentTweetID) {
+        this.parentTweetID = parentTweetID;
+    }
+
+    public LinkedList<String> getSubTweets() {
+        return subTweets;
+    }
+
+    public void setSubTweets(LinkedList<String> subTweets) {
+        this.subTweets = subTweets;
+    }
+
+    public String getSourceTweetID() {
+        return sourceTweetID;
+    }
+
+    public void setSourceTweetID(String sourceTweetID) {
+        this.sourceTweetID = sourceTweetID;
+    }
+
+    public LocalDateTime getRetweetDate() {
+        return retweetDate;
+    }
+
+    public void setRetweetDate(LocalDateTime retweetDate) {
+        this.retweetDate = retweetDate;
+    }
+
+    public boolean isRetweeted() {
+        return isRetweeted;
+    }
+
+    public void setRetweeted(boolean retweeted) {
+        isRetweeted = retweeted;
+    }
+
+
+    /**
+     * For Liking and Disliking
+     * @param user
+     */
+
+    public void addLike(User user){
+        getLikeNumber().add(+1);
+        addUserToLikes(user);
+    }
+
+    public void addUserToLikes(User user){
+        getLikes().add(user.getID());
+    }
+
+    public void removeLike(User user){
+        getLikeNumber().add(-1);
+        removeUserFromLikes(user);
+    }
+
+    public void removeUserFromLikes(User user) {
+        getLikes().remove(user.getID());
+    }
+
+
+    /**
+     * For Retweeting and Undo Retweeting
+     * @param user
+     */
+
+    public void addRetweet(User user){
+        getRetweetNumber().add(+1);
+        addUserToRetweets(user);
+    }
+
+    public void addUserToRetweets(User user){
+        getRetweets().add(user.getID());
+    }
+
+    public void removeRetweet(User user){
+        getRetweetNumber().add(-1);
+        addUserToRetweets(user);
+    }
+
+    public void removeUserFromRetweets(User user){
+        getRetweets().remove(user.getID());
+    }
+
+    /**
+     * For Adding to spam reports and Removing from spam reports.
+     * @param user
+     */
+
+    public void addSpamReport(User user){
+        getSpamReportNumber().add(+1);
+        addUserToSpamReports(user);
+    }
+
+    public void addUserToSpamReports(User user){
+        getSpamReports().add(user.getID());
+    }
+
+    public void removeSpamReport(User user){
+        getSpamReportNumber().add(-1);
+        removeUserFromSpamReports(user);
+    }
+
+    public void removeUserFromSpamReports(User user){
+        getSpamReports().remove(user.getID());
+    }
+
+
+
+
+
+
+
 }
