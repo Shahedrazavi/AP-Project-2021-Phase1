@@ -1,27 +1,74 @@
-Models/Notifications/NotifType/UnfollowNotification.java
- Models.Notifications.NotifType.UnfollowNotification
-Models/Notifications/NotifType/FollowNotification.java
- Models.Notifications.NotifType.FollowNotification
+Savable.java
+ Savable
+Util/Logger.java
+ Util.Logger
+Util/CLI.java
+ Util.CLI
+Util/IntHolder.java
+ Util.IntHolder
+Classes/EXPCLASS.java
+ Classes.EXPCLASS
+ Classes.EXPCLASS$A
 Models/Notifications/NotifType/RequestNotification.java
  Models.Notifications.NotifType.RequestNotification
-Models/SavedMessage.java
- Models.SavedMessage
+Models/Notifications/NotifType/FollowNotification.java
+ Models.Notifications.NotifType.FollowNotification
+Models/ChatLogic.java
+ Models.ChatLogic
+Models/Notifications/NotifLogic.java
+ Models.Notifications.NotifLogic
+Models/Notifications/NotifType/UnfollowNotification.java
+ Models.Notifications.NotifType.UnfollowNotification
+UI/MainMenu.java
+ UI.MainMenu
 Models/Notifications/Notification.java
  Models.Notifications.Notification
-Classes/IntHolder.java
- Classes.IntHolder
-Models/Message.java
- Models.Message
+ Models.Notifications.Notification$NotifType
+Models/TweetLogic.java
+ Models.TweetLogic
+Models/ChatMessage.java
+ Models.ChatMessage
+ Models.ChatMessage$Owner
+Models/ChatRoom.java
+ Models.ChatRoom
 Models/Tweet.java
  Models.Tweet
  Models.Tweet$TweetBuilder
-Models/TweetLogic.java
- Models.TweetLogic
+UI/Page.java
+ UI.Page
+UI/Explore.java
+ UI.Explore
+Models/Memo.java
+ Models.Memo
+ Models.Memo$MemoType
+Models/MemoMsg.java
+ Models.MemoMsg
+UI/OthersProfile.java
+ UI.OthersProfile
+UI/SelfProfile.java
+ UI.SelfProfile
+UI/Profile.java
+ UI.Profile
+UI/Messages.java
+ UI.Messages
+UI/SignIn.java
+ UI.SignIn
+UI/NotificationsPage.java
+ UI.NotificationsPage
+UI/Timeline.java
+ UI.Timeline
 Models/User.java
  Models.User
+ Models.User$LastSeenType
  Models.User$UserBuilder
  Models.User$UsersList
 Models/UserLogic.java
  Models.UserLogic
+Models/Message.java
+ Models.Message
 Main.java
  Main
+UI/SignUp.java
+ UI.SignUp
+UI/FirstPage.java
+ UI.FirstPage

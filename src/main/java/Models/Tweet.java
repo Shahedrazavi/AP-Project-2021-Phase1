@@ -1,12 +1,11 @@
 package Models;
 
-import Classes.IntHolder;
+import Util.IntHolder;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-public class Tweet implements SavedMessage {
-    public static String lastID;
+public class Tweet implements Memo {
 
     private String ID;
     private String text;
@@ -28,6 +27,8 @@ public class Tweet implements SavedMessage {
     private String sourceTweetID;
     private LocalDateTime retweetDate;
     private boolean isRetweeted;
+
+    public MemoType memoType;
 
     public Tweet(String ID, String text, LocalDateTime date,
                  LinkedList<String> likes, IntHolder likeNumber,
@@ -52,6 +53,7 @@ public class Tweet implements SavedMessage {
         this.sourceTweetID = sourceTweetID;
         this.retweetDate = retweetDate;
         this.isRetweeted = isRetweeted;
+        this.memoType = MemoType.tweet;
     }
 
     static class TweetBuilder{
@@ -177,14 +179,6 @@ public class Tweet implements SavedMessage {
      * Getters and Setters
      */
 
-
-    public static String getLastID() {
-        return lastID;
-    }
-
-    public static void setLastID(String lastID) {
-        Tweet.lastID = lastID;
-    }
 
     public String getID() {
         return ID;
@@ -384,6 +378,12 @@ public class Tweet implements SavedMessage {
     public void removeUserFromSpamReports(User user){
         getSpamReports().remove(user.getID());
     }
+
+
+    public void addToSubTweet(Tweet tweet){
+        getSubTweets().add(tweet.getID());
+    }
+
 
 
 

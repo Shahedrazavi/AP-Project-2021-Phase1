@@ -1,4 +1,4 @@
-package Classes;
+package Util;
 
 public class IntHolder {
     public Integer value;

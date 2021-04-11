@@ -1,14 +1,14 @@
 package Models;
 
-import Classes.IntHolder;
+import Models.Notifications.Notification;
+import Util.IntHolder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.LinkedList;
 
 public class User {
-    public static String lastID;
+
 
     private String ID;
     private String username;
@@ -23,7 +23,7 @@ public class User {
     private LocalDateTime lastSeen;
 
 
-    private LinkedList<String> tweets;
+    private transient LinkedList<String> tweets;
     private IntHolder tweetNumber;
 
     // for future features //
@@ -45,7 +45,19 @@ public class User {
 
     private LinkedList<UsersList> usersLists;
 
-    private LinkedList<SavedMessage> savedMessages;
+    private LinkedList<MemoMsg> savedMessages;
+
+    private LastSeenType lastSeenType;
+
+    private LinkedList<Notification> notifications;
+
+    private transient LinkedList<String> chatRooms;
+
+    public enum LastSeenType{
+        everyone,
+        followings,
+        no_one
+    }
 
     class UsersList{
         private String listName;
@@ -57,6 +69,22 @@ public class User {
 
         public void addUser(String ID){
             users.add(ID);
+        }
+
+        public String getListName() {
+            return listName;
+        }
+
+        public void setListName(String listName) {
+            this.listName = listName;
+        }
+
+        public LinkedList<String> getUsers() {
+            return users;
+        }
+
+        public void setUsers(LinkedList<String> users) {
+            this.users = users;
         }
     }
 
@@ -73,8 +101,7 @@ public class User {
                 LinkedList<String> following, LinkedList<String> followers,
                 LinkedList<String> blockedUsers, LinkedList<String> mutedUsers,
                 LinkedList<String> requested, LinkedList<String> requesters,
-                LinkedList<UsersList> usersLists,
-                LinkedList<SavedMessage> savedMessages) {
+                LinkedList<UsersList> usersLists) {
         this.ID = ID;
         this.username = username;
         this.password = password;
@@ -102,7 +129,10 @@ public class User {
         this.requested = requested;
         this.requesters = requesters;
         this.usersLists = usersLists;
-        this.savedMessages = savedMessages;
+        this.savedMessages = new LinkedList<>();
+        this.lastSeenType = LastSeenType.everyone;
+        this.notifications = new LinkedList<>();
+        this.chatRooms = new LinkedList<>();
     }
 
     static class UserBuilder{
@@ -140,7 +170,6 @@ public class User {
 
         private LinkedList<UsersList> usersLists;
 
-        private LinkedList<SavedMessage> savedMessages;
 
         public UserBuilder setID(String ID) {
             this.ID = ID;
@@ -150,8 +179,8 @@ public class User {
         public UserBuilder setUsername(String username) {
             this.username = username;
             return this;
-        }
 
+        }
         public UserBuilder setPassword(String password) {
             this.password = password;
             return this;
@@ -277,10 +306,6 @@ public class User {
             return this;
         }
 
-        public UserBuilder setSavedMessages(LinkedList<SavedMessage> savedMessages) {
-            this.savedMessages = savedMessages;
-            return this;
-        }
 
         public User build(){
             return new User(ID,
@@ -296,22 +321,13 @@ public class User {
                     following, followers,
                     blockedUsers, mutedUsers,
                     requested, requesters,
-                    usersLists,
-                    savedMessages);
+                    usersLists);
         }
     }
 
     /** Setters and Getters
      *
      */
-
-    public static String getLastID() {
-        return lastID;
-    }
-
-    public static void setLastID(String lastID) {
-        User.lastID = lastID;
-    }
 
     public String getID() {
         return ID;
@@ -529,13 +545,38 @@ public class User {
         this.usersLists = usersLists;
     }
 
-    public LinkedList<SavedMessage> getSavedMessages() {
+    public LinkedList<MemoMsg> getSavedMessages() {
         return savedMessages;
     }
 
-    public void setSavedMessages(LinkedList<SavedMessage> savedMessages) {
+    public void setSavedMessages(LinkedList<MemoMsg> savedMessages) {
         this.savedMessages = savedMessages;
     }
+
+    public LastSeenType getLastSeenType() {
+        return lastSeenType;
+    }
+
+    public void setLastSeenType(LastSeenType lastSeenType) {
+        this.lastSeenType = lastSeenType;
+    }
+
+    public LinkedList<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(LinkedList<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public LinkedList<String> getChatRooms() {
+        return chatRooms;
+    }
+
+    public void setChatRooms(LinkedList<String> chatRooms) {
+        this.chatRooms = chatRooms;
+    }
+
 
 
 
@@ -543,4 +584,37 @@ public class User {
     public void addToTweets(String ID){
         getTweets().add(ID);
     }
+
+    public void addBlock(String ID){
+        getBlockedUsers().add(ID);
+    }
+
+    public void removeBlock(String ID){
+        getBlockedUsers().remove(ID);
+    }
+
+    public void addMute(String ID){
+        getMutedUsers().add(ID);
+    }
+
+    public void removeMute(String ID){
+        getMutedUsers().remove(ID);
+    }
+
+    public void addFollower(String ID){
+        getFollowers().add(ID);
+    }
+
+    public void removeFollower(String ID){
+        getFollowers().remove(ID);
+    }
+
+    public void addFollowing(String ID){
+        getFollowing().add(ID);
+    }
+
+    public void removeFollowing(String ID){
+        getFollowing().remove(ID);
+    }
+
 }

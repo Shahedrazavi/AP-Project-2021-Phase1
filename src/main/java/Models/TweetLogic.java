@@ -1,14 +1,25 @@
 package Models;
 
-import Classes.IntHolder;
+import Util.IntHolder;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class TweetLogic {
+    private String lastID = "";
 
     private LinkedList<Tweet> tweets;
 
+    public String getLastID() {
+        if (lastID.equals("")){
+            return "0";
+        }
+        return lastID;
+    }
+
+    public void setLastID(String lastID) {
+        this.lastID = lastID;
+    }
 
 
     public LinkedList<Tweet> getAllTweets(){
@@ -46,9 +57,9 @@ public class TweetLogic {
         return false;
     }
 
-    public boolean checkRetweet(Tweet retweet , User user){
+    public boolean checkRetweet(Tweet sourceTweet, User user){
         String userID = user.getID();
-        LinkedList<String> retweets = IDtoTweet(retweet.getSourceTweetID()).getRetweets();
+        LinkedList<String> retweets = IDtoTweet(sourceTweet.getSourceTweetID()).getRetweets();
 
         for ( String retweetedID : retweets){
             if(retweetedID.equals(userID)){
@@ -69,7 +80,6 @@ public class TweetLogic {
         }
         return false;
     }
-
 
 
     /* liking a likedTweet
@@ -94,9 +104,9 @@ public class TweetLogic {
      */
     public Tweet.TweetBuilder newRawTweet(String text, User user) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        int id = Integer.parseInt(Tweet.getLastID()) + 1;
+        int id = Integer.parseInt(getLastID()) + 1;
         String newID = Integer.toString(id);
-        Tweet.setLastID(newID);
+        setLastID(newID);
         return new Tweet.TweetBuilder().setID(newID).setText(text).setDate(localDateTime).setUserID(user.getID())
                 .setLikes(new LinkedList<>()).setLikeNumber(new IntHolder(0))
                 .setRetweets(new LinkedList<>()).setRetweetNumber(new IntHolder(0))
@@ -151,13 +161,21 @@ public class TweetLogic {
         Tweet subTweet = newSubTweet(text, user, parent);
         addToAllTweets(subTweet);
         user.addToTweets(subTweet.getID());
+        parent.addToSubTweet(subTweet);
     }
 
     public void ReTweet(Tweet sourceTweet, User user){
         Tweet retweet = newRetweet(sourceTweet, user);
         addToAllTweets(retweet);
         user.addToTweets(retweet.getID());
+        sourceTweet.addRetweet(user);
     }
+
+    public void spamReport(Tweet spamTweet, User user){
+        spamTweet.addSpamReport(user);
+    }
+
+
 
 
 

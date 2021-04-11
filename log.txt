@@ -1,0 +1,94 @@
+2021-04-09T19:06:04.690018400: Hello
+2021-04-09T19:15:17.526666400: Hello
+2021-04-09T19:15:38.529481500: Hello
+2021-04-09T19:15:38.550424900: Opened The Application
+2021-04-09T19:20:03.649661800: Hello
+2021-04-09T19:20:03.672237200: Opened The Application
+2021-04-09T19:24:21.598119700: Hello
+2021-04-09T19:24:21.615988: Opened The Application
+2021-04-09T19:25:27.750245200: Hello
+2021-04-09T19:25:27.767358100: Opened The Application
+2021-04-09T19:36:32.885700500: Hello
+2021-04-09T19:36:32.905295800: Opened The Application
+2021-04-09T19:37:07.876184900: Hello
+2021-04-09T19:37:07.892269400: Opened The Application
+2021-04-09T19:37:39.772959400: Hello
+2021-04-09T19:37:39.791492: Opened The Application
+2021-04-09T19:37:57.714833100: Hello
+2021-04-09T19:37:57.730432400: Opened The Application
+2021-04-09T19:38:14.396394700: Hello
+2021-04-09T19:38:14.414346500: Opened The Application
+2021-04-09T19:38:34.863858800: Hello
+2021-04-09T19:38:34.880813200: Opened The Application
+2021-04-09T19:38:54.056333700: Hello
+2021-04-09T19:38:54.071301: Opened The Application
+2021-04-09T19:39:05.195581400: Hello
+2021-04-09T19:39:05.216651800: Opened The Application
+2021-04-09T19:41:51.074499: Hello
+2021-04-09T19:41:51.111623900: Opened The Application
+2021-04-09T19:57:24.422883700: Opened The Application
+2021-04-09T20:16:12.965756100: Opened The Application
+2021-04-09T20:18:30.314203800: Opened The Application
+2021-04-09T20:18:40.240667900: Opened The Application
+2021-04-09T21:41:52.449823700: Opened The Application
+2021-04-09T21:42:13.405401400: Opened The Application
+2021-04-09T23:27:20.537600200: Application started.
+2021-04-09T23:27:35.506241500: Application started.
+2021-04-10T00:36:12.560878400: Application started.
+2021-04-10T00:36:25.493344700: User with name: "yes" and ID: "483" logged in.
+2021-04-10T00:37:37.825964300: Application started.
+2021-04-10T00:47:47.356840600: Application started.
+2021-04-10T00:48:03.353109300: Application started.
+2021-04-10T14:01:54.736804300: Application started.
+2021-04-10T14:02:03.594037700: Application started.
+2021-04-10T14:02:43.874350500: Application started.
+2021-04-10T14:02:50.748831400: Application started.
+2021-04-10T14:02:53.775417100: Application started.
+2021-04-10T14:03:04.874988300: Application started.
+2021-04-10T14:11:39.611886400: Application started.
+2021-04-10T14:16:07.447221300: Application started.
+2021-04-10T14:16:16.330958400: Application started.
+2021-04-10T14:19:58.667107400: Application started.
+2021-04-10T14:21:28.914009400: Application started.
+2021-04-10T14:23:38.483990800: Application started.
+2021-04-10T14:34:00.438798: Application started.
+2021-04-10T14:35:20.868894200: Application started.
+2021-04-10T14:44:50.467971500: Application started.
+2021-04-10T14:45:47.051079700: Application started.
+2021-04-10T14:46:34.051045800: Application started.
+2021-04-10T14:46:50.002598600: Application started.
+2021-04-10T14:47:22.051821400: Application started.
+2021-04-10T14:47:33.965399500: Application started.
+2021-04-10T14:59:22.556598900: Application started.
+2021-04-10T15:02:22.198201900: Application started.
+2021-04-10T15:03:13.216719400: Application started.
+2021-04-10T16:24:56.485333800: Application started.
+2021-04-10T16:26:47.424623800: User with username: "jelighe" and ID: "2" created a new account.
+2021-04-10T16:26:47.424623800: Application started.
+2021-04-10T16:33:42.213280400: Application started.
+2021-04-10T16:34:03.268183300: User with username: "jelighe" and ID: "2" logged in.
+2021-04-10T16:34:10.603238500: Application started.
+2021-04-10T16:35:10.092249200: User with username: "jelighe" and ID: "2" logged in.
+2021-04-10T16:35:41.687156: Application started.
+2021-04-10T16:35:51.628274700: User with username: "jelighe" and ID: "2" logged in.
+2021-04-10T16:36:14.902444700: Application started.
+2021-04-10T16:36:25.844770400: User with username: "jelighe" and ID: "2" logged in.
+2021-04-10T16:36:50.571965400: Application started.
+2021-04-10T16:36:59.511260400: User with username: "jelighe" and ID: "2" logged in.
+2021-04-10T16:40:48.019103500: Application started.
+2021-04-10T16:41:11.109718300: User with username: "jelighe" and ID: "2" logged in.
+2021-04-10T16:42:41.670531700: Application started.
+2021-04-10T16:44:02.255269500: Application started.
+2021-04-10T16:44:35.002286200: Application started.
+2021-04-10T20:00:37.020092100: Application started.
+2021-04-10T20:02:48.959324900: User with username: "jafar" and ID: "1" created a new account.
+2021-04-10T20:02:48.960842700: Application started.
+2021-04-11T05:38:16.953166200: Application started.
+2021-04-11T05:39:47.772854500: User with username: "jelighe" and ID: "1" created a new account.
+2021-04-11T05:39:47.773854800: Application started.
+2021-04-11T05:44:01.671670600: Application started.
+2021-04-11T05:44:16.614406200: User with username: "jelighe" and ID: "1" logged in.
+2021-04-11T05:46:24.043637200: Application started.
+2021-04-11T05:46:59.211965500: User with username: "jelighe" and ID: "1" created a new account.
+2021-04-11T05:46:59.212968800: Application started.
+2021-04-11T05:47:15.407205: User with username: "jelighe" and ID: "1" logged in.

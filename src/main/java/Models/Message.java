@@ -1,5 +1,6 @@
 package Models;
 
-public class Message implements SavedMessage{
+public class Message implements Memo {
 
+    public MemoType memoType;
 }
