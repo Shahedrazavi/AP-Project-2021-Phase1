@@ -26,16 +26,16 @@ public class NotifLogic {
         notification.setSeen(false);
     }
 
-    public void addNotif(User user , Notification.NotifType notifType){
+    public void addNotif(User user , User fromUser , Notification.NotifType notifType){
         Notification newNotif = null;
         if (notifType == Notification.NotifType.follow){
-            newNotif = new FollowNotification(user.getID(), LocalDateTime.now());
+            newNotif = new FollowNotification(user.getID(), fromUser.getID(), LocalDateTime.now());
         }
         if (notifType == Notification.NotifType.followreq){
-            newNotif = new RequestNotification(user.getID(), LocalDateTime.now());
+            newNotif = new RequestNotification(user.getID(), fromUser.getID(), LocalDateTime.now());
         }
         if (notifType == Notification.NotifType.unfollow){
-            newNotif = new UnfollowNotification(user.getID(), LocalDateTime.now());
+            newNotif = new UnfollowNotification(user.getID(), fromUser.getID(), LocalDateTime.now());
         }
 
         user.getNotifications().add(newNotif);

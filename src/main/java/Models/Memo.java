@@ -8,4 +8,8 @@ public interface Memo {
         message,
         chatmsg
     }
+
+    public MemoType getMemoType();
+
+    public String getText();
 }

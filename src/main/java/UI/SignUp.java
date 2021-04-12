@@ -25,7 +25,7 @@ public class SignUp extends Page {
 
     @Override
     public void firstView() {
-        printer.println("Sign Up");
+        printer.sectionShower("Sign Up");
         enterInfo();
     }
 

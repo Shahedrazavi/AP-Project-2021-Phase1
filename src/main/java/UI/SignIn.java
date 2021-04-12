@@ -15,7 +15,7 @@ public class SignIn extends Page{
 
     @Override
     public void firstView() {
-        printer.println("Sign In");
+        printer.sectionShower("Sign In");
         enterUsername();
     }
 
@@ -46,7 +46,7 @@ public class SignIn extends Page{
                     enterPassword();
                 }
                 else {
-                    printer.println("Invalid username, please try again");
+                    printer.println("Username not found, please try again");
                 }
             }
         }

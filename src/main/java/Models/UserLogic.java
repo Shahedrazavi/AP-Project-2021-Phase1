@@ -1,22 +1,31 @@
 package Models;
 
 import Models.Notifications.*;
-import Util.IntHolder;
+import Util.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class UserLogic {
-    private String lastID = "";
+    private String lastID ;
 
     private LinkedList<User> users;
 
-    NotifLogic notifLogic;
+    private ModelLoader modelLoader;
+    private NotifLogic notifLogic;
+    private TweetLogic tweetLogic;
+    private UsersListLogic usersListLogic;
+    private ChatLogic chatLogic;
 
-    public UserLogic(LinkedList<User> users , NotifLogic notifLogic) {
+    public UserLogic(String lastID, LinkedList<User> users , ModelLoader modelLoader, NotifLogic notifLogic , TweetLogic tweetLogic , UsersListLogic usersListLogic , ChatLogic chatLogic) {
+        this.lastID = lastID;
         this.users = users;
+        this.modelLoader = modelLoader;
         this.notifLogic = notifLogic;
+        this.tweetLogic = tweetLogic;
+        this.usersListLogic = usersListLogic;
+        this.chatLogic = chatLogic;
     }
 
     public String getLastID() {
@@ -30,6 +39,24 @@ public class UserLogic {
         this.lastID = lastID;
     }
 
+    public NotifLogic getNotifLogic() {
+        return notifLogic;
+    }
+
+    public TweetLogic getTweetLogic() {
+        return tweetLogic;
+    }
+
+    public UsersListLogic getUsersListLogic() {
+        return usersListLogic;
+    }
+
+    public ChatLogic getChatLogic() {
+        return chatLogic;
+    }
+
+
+
     public LinkedList<User> getAllUsers(){
         return users;
     }
@@ -37,6 +64,12 @@ public class UserLogic {
     public void addToAllUsers(User user){
         getAllUsers().add(user);
     }
+
+    public void removeFromAllUsers(User user){
+        getAllUsers().remove(user);
+    }
+
+
 
     public User IDtoUser(String ID){
         for (User user : getAllUsers()){
@@ -124,7 +157,16 @@ public class UserLogic {
     }
 
     public void blockUser(User user, User blockedUser){
-        user.addBlock(blockedUser.getID());
+        String blockedUserID = blockedUser.getID();
+        // if the blocked user is in the followers , program will remove it from the followers too //
+        if (user.isInFollowers(blockedUser)){
+            unfollowUser(blockedUser,user);
+        }
+        // if you were following this user , you will be removed from this account followers //
+        if (blockedUser.isInFollowers(user)){
+            unfollowUser(user,blockedUser);
+        }
+        user.addBlock(blockedUserID);
     }
 
     public void unblockUser(User user, User blockedUser){
@@ -142,30 +184,30 @@ public class UserLogic {
     public void followUser(User user, User followedUser){
         user.addFollowing(followedUser.getID());
         followedUser.addFollower(user.getID());
-        notifLogic.addNotif(followedUser, Notification.NotifType.follow);
+        notifLogic.addNotif(followedUser, user, Notification.NotifType.follow);
     }
 
     public void unfollowUser(User user, User followedUser){
         user.removeFollowing(followedUser.getID());
         followedUser.removeFollower(user.getID());
-        notifLogic.addNotif(followedUser, Notification.NotifType.unfollow);
+        notifLogic.addNotif(followedUser, user, Notification.NotifType.unfollow);
     }
 
-    public void request(User user , User requestedUser){
-        requestedUser.getRequesters().add(user.getID());
-        user.getRequested().add(requestedUser.getID());
-        notifLogic.addNotif(requestedUser, Notification.NotifType.followreq);
+    public void request(User requester, User target){
+        target.addRequestedBy(requester.getID());
+        requester.addRequestingFrom(target.getID());
+        notifLogic.addNotif(target, requester, Notification.NotifType.followreq);
     }
 
-    public void accept(User user , User acceptedUser){
-        user.getRequesters().remove(acceptedUser.getID());
-        user.getRequested().remove(acceptedUser.getID());
-        followUser(acceptedUser , user);
+    public void accept(User user , User acceptor){
+        acceptor.removeRequestedBy(user.getID());
+        user.removeRequestingFrom(acceptor.getID());
+        followUser(user, acceptor);
     }
 
-    public void reject(User user , User rejectedUser){
-        user.getRequesters().remove(rejectedUser.getID());
-        user.getRequested().remove(rejectedUser.getID());
+    public void reject(User user , User rejecter){
+        rejecter.removeRequestedBy(user.getID());
+        user.removeRequestingFrom(rejecter.getID());
     }
 
     public void Activate(User user){
@@ -233,6 +275,140 @@ public class UserLogic {
         return user;
     }
 
+
+    /** !!!Deleting A User!!!
+     * Delete all contents of this user from all parts of the models
+     */
+    public void deleteUser(User deletedUser){
+        String deletedUserID = deletedUser.getID();
+        /* Removing User's tweets , likes, retweets and spam reports.
+
+         */
+        if (!tweetLogic.getAllTweets().isEmpty()){
+            for ( Tweet tweet :tweetLogic.getAllTweets()){
+                if (tweet.getLikes().contains(deletedUserID)){
+                    tweet.removeLike(deletedUser);
+                }
+                if (tweet.getRetweets().contains(deletedUserID)){
+                    tweet.removeRetweet(deletedUser);
+                }
+                if (tweet.getSpamReports().contains(deletedUserID)){
+                    tweet.removeSpamReport(deletedUser);
+                }
+
+
+
+                if (tweet.getUserID().equals(deletedUserID)){
+
+                    /* Retweets get deleted too */
+                    if (tweet.getRetweets().size()!=0){
+                        for (String ID : tweet.getRetweets()){
+                            Tweet retweet = tweetLogic.IDtoTweet(ID);
+                            User user = IDtoUser(retweet.getUserID());
+                            user.removeFromTweets(ID);
+                            tweetLogic.removeFromAllTweets(retweet);
+                        }
+                    }
+                    /* Subtweets wont longer be a subtweet */
+                    if (tweet.getSubTweets().size()!=0){
+                        for (String ID : tweet.getSubTweets()){
+                            Tweet subtweet = tweetLogic.IDtoTweet(ID);
+                            subtweet.setParentTweetID("0");
+                        }
+                    }
+                    /* deleting the tweet */
+                    tweetLogic.removeFromAllTweets(tweet);
+                }
+            }
+        }
+
+        /* Removing chatrooms of this user */
+        if (!chatLogic.getAllChatRooms().isEmpty()){
+            for (ChatRoom chatRoom : chatLogic.getAllChatRooms()){
+                String chatroomID = chatRoom.getID();
+                if (chatRoom.getUser1ID().equals(deletedUserID)){
+                    User user2 = IDtoUser(chatRoom.getUser2ID());
+                    user2.removeChatRoom(chatroomID);
+                }
+                else if (chatRoom.getUser2ID().equals(deletedUserID)){
+                    User user1 = IDtoUser(chatRoom.getUser1ID());
+                    user1.removeChatRoom(chatroomID);
+                }
+                chatLogic.removeFromAllChatRooms(chatRoom);
+            }
+        }
+
+
+        /* Removing userslist of this user and user from others userslist */
+        if (!usersListLogic.getAllUsersList().isEmpty()){
+            for (UsersList usersList : usersListLogic.getAllUsersList()){
+                String userListID = usersList.getID();
+                if (usersList.getUsers().contains(deletedUserID)){
+                    usersList.removeUserFromList(deletedUserID);
+                }
+                if (usersList.getOwnerID().equals(deletedUserID)){
+                    usersListLogic.removeFromAllUsersLists(usersList);
+                }
+            }
+        }
+
+        /* Deleting the user itself */
+        removeFromAllUsers(deletedUser);
+
+
+    }
+
+    public LinkedList<String> newChatroomFilter(User user , LinkedList<String> users){
+        LinkedList<String> filteredList = new LinkedList<>();
+
+        for (String selectedUserID : users){
+            User selectedUser = IDtoUser(selectedUserID);
+            if (!hasChatroom(user, selectedUserID)){
+                if (!user.isInBlockedUsers(selectedUser)){
+                    if (!selectedUser.isInBlockedUsers(user)){
+                        filteredList.add(selectedUserID);
+                    }
+                }
+            }
+        }
+        return filteredList;
+    }
+
+    public LinkedList<String> oldChatroomFilter(User user , LinkedList<String> users){
+        LinkedList<String> filteredList = new LinkedList<>();
+
+        for (String selectedUserID : users){
+            User selectedUser = IDtoUser(selectedUserID);
+            if (hasChatroom(user, selectedUserID)){
+                if (!user.isInBlockedUsers(selectedUser)){
+                    if (!selectedUser.isInBlockedUsers(user)){
+                        filteredList.add(selectedUserID);
+                    }
+                }
+            }
+        }
+        return filteredList;
+    }
+
+    public boolean hasChatroom(User user , String checkingUserID){
+        for ( String chatRoomID : user.getChatRooms()){
+            ChatRoom chatRoom = getChatLogic().IDtoChatroom(chatRoomID);
+            if (chatRoom.getOtherUserID(user.getID()).equals(checkingUserID)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ChatRoom findChatroomByTwoUsers( User user1 , User user2){
+        for (String chatRoomID :user1.getChatRooms()){
+            ChatRoom chatRoom = getChatLogic().IDtoChatroom(chatRoomID);
+            if (chatRoom.getOtherUserID(user1.getID()).equals(user2.getID())){
+                return chatRoom;
+            }
+        }
+        return null;
+    }
 
     @Override
     public String toString() {

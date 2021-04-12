@@ -43,9 +43,9 @@ public class User {
     private LinkedList<String> requested;
     private LinkedList<String> requesters;
 
-    private LinkedList<UsersList> usersLists;
+    private transient LinkedList<UsersList> usersLists;
 
-    private LinkedList<MemoMsg> savedMessages;
+    private LinkedList<Memo> memos;
 
     private LastSeenType lastSeenType;
 
@@ -59,34 +59,6 @@ public class User {
         no_one
     }
 
-    class UsersList{
-        private String listName;
-        private LinkedList<String> users;
-
-        UsersList(String listName) {
-            this.listName = listName;
-        }
-
-        public void addUser(String ID){
-            users.add(ID);
-        }
-
-        public String getListName() {
-            return listName;
-        }
-
-        public void setListName(String listName) {
-            this.listName = listName;
-        }
-
-        public LinkedList<String> getUsers() {
-            return users;
-        }
-
-        public void setUsers(LinkedList<String> users) {
-            this.users = users;
-        }
-    }
 
     public User(String ID,
                 String username, String password,
@@ -129,7 +101,7 @@ public class User {
         this.requested = requested;
         this.requesters = requesters;
         this.usersLists = usersLists;
-        this.savedMessages = new LinkedList<>();
+        this.memos = new LinkedList<>();
         this.lastSeenType = LastSeenType.everyone;
         this.notifications = new LinkedList<>();
         this.chatRooms = new LinkedList<>();
@@ -402,6 +374,9 @@ public class User {
     }
 
     public String getBio() {
+        if(bio.equals("")){
+            return "No bio";
+        }
         return bio;
     }
 
@@ -493,64 +468,32 @@ public class User {
         return following;
     }
 
-    public void setFollowing(LinkedList<String> following) {
-        this.following = following;
-    }
-
     public LinkedList<String> getFollowers() {
         return followers;
-    }
-
-    public void setFollowers(LinkedList<String> followers) {
-        this.followers = followers;
     }
 
     public LinkedList<String> getBlockedUsers() {
         return blockedUsers;
     }
 
-    public void setBlockedUsers(LinkedList<String> blockedUsers) {
-        this.blockedUsers = blockedUsers;
-    }
-
     public LinkedList<String> getMutedUsers() {
         return mutedUsers;
-    }
-
-    public void setMutedUsers(LinkedList<String> mutedUsers) {
-        this.mutedUsers = mutedUsers;
     }
 
     public LinkedList<String> getRequested() {
         return requested;
     }
 
-    public void setRequested(LinkedList<String> requested) {
-        this.requested = requested;
-    }
-
     public LinkedList<String> getRequesters() {
         return requesters;
-    }
-
-    public void setRequesters(LinkedList<String> requesters) {
-        this.requesters = requesters;
     }
 
     public LinkedList<UsersList> getUsersLists() {
         return usersLists;
     }
 
-    public void setUsersLists(LinkedList<UsersList> usersLists) {
-        this.usersLists = usersLists;
-    }
-
-    public LinkedList<MemoMsg> getSavedMessages() {
-        return savedMessages;
-    }
-
-    public void setSavedMessages(LinkedList<MemoMsg> savedMessages) {
-        this.savedMessages = savedMessages;
+    public LinkedList<Memo> getMemos() {
+        return memos;
     }
 
     public LastSeenType getLastSeenType() {
@@ -565,24 +508,40 @@ public class User {
         return notifications;
     }
 
-    public void setNotifications(LinkedList<Notification> notifications) {
-        this.notifications = notifications;
-    }
-
     public LinkedList<String> getChatRooms() {
         return chatRooms;
     }
 
-    public void setChatRooms(LinkedList<String> chatRooms) {
-        this.chatRooms = chatRooms;
+
+
+
+
+    public boolean isInFollowers(User user){
+        return getFollowers().contains(user.getID());
     }
 
+    public boolean isInFollowings(User user){
+        return getFollowing().contains(user.getID());
+    }
 
+    public boolean isInBlockedUsers(User user){
+        return getBlockedUsers().contains(user.getID());
+    }
 
+    public boolean isInMutedUsers(User user){
+        return getMutedUsers().contains(user.getID());
+    }
 
+    public boolean hasRequested(User user){
+        return getRequesters().contains(user.getID());
+    }
 
     public void addToTweets(String ID){
         getTweets().add(ID);
+    }
+
+    public void removeFromTweets(String ID){
+        getTweets().remove(ID);
     }
 
     public void addBlock(String ID){
@@ -615,6 +574,34 @@ public class User {
 
     public void removeFollowing(String ID){
         getFollowing().remove(ID);
+    }
+
+    public void addRequestedBy(String ID){
+        getRequesters().add(ID);
+    }
+
+    public void removeRequestedBy(String ID){
+        getRequesters().remove(ID);
+    }
+
+    public void addRequestingFrom(String ID){
+        getRequested().add(ID);
+    }
+
+    public void removeRequestingFrom(String ID){
+        getRequested().remove(ID);
+    }
+
+    public void addChatRoom(String ID){
+        getChatRooms().add(ID);
+    }
+
+    public void removeChatRoom(String ID){
+        getChatRooms().remove(ID);
+    }
+
+    public void addMemo(Memo memo){
+        getMemos().add(memo);
     }
 
 }

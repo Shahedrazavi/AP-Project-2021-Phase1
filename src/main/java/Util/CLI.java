@@ -49,5 +49,22 @@ public class CLI {
         print("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
     }
 
+    public void sectionShower(String string){
+        makeThickLine();
+        nextLine();
+        println(string);
+        makeThickLine();
+        nextLine();
+    }
+
+    public void showHighlightedMsg(String string){
+        printer.makeLine();
+        printer.nextLine();
+        printer.println(string);
+        printer.makeLine();
+        printer.nextLine();
+    }
+
+
 
 }

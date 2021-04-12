@@ -6,9 +6,14 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class TweetLogic {
-    private String lastID = "";
+    private String lastID ;
 
     private LinkedList<Tweet> tweets;
+
+    public TweetLogic(String lastID, LinkedList<Tweet> tweets) {
+        this.lastID = lastID;
+        this.tweets = tweets;
+    }
 
     public String getLastID() {
         if (lastID.equals("")){
@@ -21,13 +26,16 @@ public class TweetLogic {
         this.lastID = lastID;
     }
 
-
     public LinkedList<Tweet> getAllTweets(){
         return tweets;
     }
 
     public void addToAllTweets(Tweet tweet){
         getAllTweets().add(tweet);
+    }
+
+    public void removeFromAllTweets(Tweet tweet){
+        getAllTweets().remove(tweet);
     }
 
     public Tweet IDtoTweet(String ID){
@@ -95,7 +103,7 @@ public class TweetLogic {
     }
 
 //    public void newTweet(){
-//        Tweet tweet = new Tweet.TweetBuilder().build();
+//        tweet tweet = new tweet.TweetBuilder().build();
 //        getAllTweets().add(tweet);
 //    }
 
@@ -114,7 +122,7 @@ public class TweetLogic {
                 .setUserID(user.getID())
                 .setOwnerID(user.getID())
                 .setSubTweets(new LinkedList<>())
-                .setSourceTweetID(newID).setRetweetDate(localDateTime).setRetweeted(false);
+                .setSourceTweetID("0").setRetweetDate(localDateTime).setRetweet(false);
     }
 
     /** Creating a new tweet
@@ -146,29 +154,32 @@ public class TweetLogic {
                 .setRetweets(sourceTweet.getRetweets()).setRetweetNumber(sourceTweet.getRetweetNumber())
                 .setSpamReports(sourceTweet.getSpamReports()).setSpamReportNumber(sourceTweet.getSpamReportNumber())
                 .setOwnerID(sourceTweet.getOwnerID()).setParentTweetID(sourceTweet.getParentTweetID()).setSubTweets(sourceTweet.getSubTweets())
-                .setSourceTweetID(sourceTweet.getSourceTweetID()).setRetweeted(true)
+                .setSourceTweetID(sourceTweet.getSourceTweetID()).setRetweet(true)
                 .build();
 //        addToAllTweets(tweet);
     }
 
-    public void Tweet(String text, User user){
+    public Tweet tweet(String text, User user){
         Tweet tweet = newTweet(text, user);
         addToAllTweets(tweet);
         user.addToTweets(tweet.getID());
+        return tweet;
     }
 
-    public void SubTweet(String text, User user, Tweet parent){
+    public Tweet subTweet(String text, User user, Tweet parent){
         Tweet subTweet = newSubTweet(text, user, parent);
         addToAllTweets(subTweet);
         user.addToTweets(subTweet.getID());
         parent.addToSubTweet(subTweet);
+        return subTweet;
     }
 
-    public void ReTweet(Tweet sourceTweet, User user){
+    public Tweet reTweet(Tweet sourceTweet, User user){
         Tweet retweet = newRetweet(sourceTweet, user);
         addToAllTweets(retweet);
         user.addToTweets(retweet.getID());
         sourceTweet.addRetweet(user);
+        return retweet;
     }
 
     public void spamReport(Tweet spamTweet, User user){

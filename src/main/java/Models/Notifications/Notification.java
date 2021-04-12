@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public class Notification {
     protected boolean isSeen;
     protected String userID;
+    protected String fromUserID;
     protected LocalDateTime notifTime;
 
     protected NotifType notifType;
@@ -18,9 +19,10 @@ public class Notification {
     }
 
 
-    public Notification(String userID , LocalDateTime notifTime){
+    public Notification(String userID , String fromUserID, LocalDateTime notifTime){
         isSeen = false;
         this.userID = userID;
+        this.fromUserID = fromUserID;
         this.notifTime = notifTime;
     }
 
@@ -39,6 +41,14 @@ public class Notification {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getFromUserID() {
+        return fromUserID;
+    }
+
+    public void setFromUserID(String fromUserID) {
+        this.fromUserID = fromUserID;
     }
 
     public LocalDateTime getNotifTime() {

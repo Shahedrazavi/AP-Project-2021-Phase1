@@ -6,7 +6,7 @@ import Util.Logger;
 
 import java.util.Scanner;
 
-public class Page {
+public abstract class Page {
     protected CLI printer = CLI.getCLI();
 
     protected Logger logger = Logger.getLogger();

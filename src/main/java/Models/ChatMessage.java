@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class ChatMessage implements Memo{
 
-    private String content;
+    private String text;
     private LocalDateTime time;
     private String chatroomID;
     private boolean isSeen;
@@ -12,13 +12,13 @@ public class ChatMessage implements Memo{
 
     public MemoType memoType;
 
-    enum Owner {
+    public enum Owner {
         one,
         two
     }
 
     public ChatMessage(String content, LocalDateTime time, String chatroomID, Owner owner) {
-        this.content = content;
+        this.text = content;
         this.time = time;
         this.chatroomID = chatroomID;
         this.isSeen = false;
@@ -32,5 +32,27 @@ public class ChatMessage implements Memo{
 
     public void setSeen(boolean seen) {
         isSeen = seen;
+    }
+
+    @Override
+    public MemoType getMemoType() {
+        return MemoType.chatmsg;
+    }
+
+    @Override
+    public String getText() {
+        return text;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    public String getTimeString(){
+        return getTime().toString();
+    }
+
+    public Owner getOwner() {
+        return owner;
     }
 }

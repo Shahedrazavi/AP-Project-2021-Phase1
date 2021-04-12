@@ -23,10 +23,6 @@ public class FirstPage extends Page {
             if (input.equals("1")){
                 condition = false;
 
-                printer.makeGap();
-                printer.makeLine();
-                printer.makeGap();
-
                 SignIn signIn = new SignIn(userLogic);
                 signIn.firstView();
             }
@@ -38,6 +34,8 @@ public class FirstPage extends Page {
             }
             else if (input.equals("3")){
                 condition = false;
+
+                logger.log("Application closed.");
 
                 System.exit(0);
 

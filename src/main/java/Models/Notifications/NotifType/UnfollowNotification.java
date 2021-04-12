@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 public class UnfollowNotification extends Notification {
 
-    public UnfollowNotification(String userID, LocalDateTime notifTime){
-        super(userID,notifTime);
+    public UnfollowNotification(String userID, String fromUserID, LocalDateTime notifTime) {
+        super(userID, fromUserID, notifTime);
         notifType = NotifType.unfollow;
     }
 }

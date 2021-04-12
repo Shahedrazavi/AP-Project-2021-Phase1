@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 public class RequestNotification extends Notification {
 
-    public RequestNotification(String userID, LocalDateTime notifTime){
-        super(userID,notifTime);
+    public RequestNotification(String userID, String fromUserID, LocalDateTime notifTime) {
+        super(userID, fromUserID, notifTime);
         notifType = NotifType.followreq;
     }
 }

@@ -26,7 +26,7 @@ public class Tweet implements Memo {
 
     private String sourceTweetID;
     private LocalDateTime retweetDate;
-    private boolean isRetweeted;
+    private boolean isRetweet;
 
     public MemoType memoType;
 
@@ -52,7 +52,7 @@ public class Tweet implements Memo {
         this.subTweets = subTweets;
         this.sourceTweetID = sourceTweetID;
         this.retweetDate = retweetDate;
-        this.isRetweeted = isRetweeted;
+        this.isRetweet = isRetweeted;
         this.memoType = MemoType.tweet;
     }
 
@@ -75,7 +75,7 @@ public class Tweet implements Memo {
 
         private String sourceTweetID;
         private LocalDateTime retweetDate;
-        private boolean isRetweeted;
+        private boolean isRetweet;
 
         public TweetBuilder setID(String ID) {
             this.ID = ID;
@@ -152,13 +152,13 @@ public class Tweet implements Memo {
             return this;
         }
 
-        public TweetBuilder setRetweeted(boolean retweeted) {
-            isRetweeted = retweeted;
+        public TweetBuilder setRetweet(boolean retweet) {
+            isRetweet = retweet;
             return this;
         }
 
-        public boolean isRetweeted() {
-            return isRetweeted;
+        public boolean isRetweet() {
+            return isRetweet;
         }
 
         public Tweet build(){
@@ -168,9 +168,15 @@ public class Tweet implements Memo {
                     spamReports, spamReportNumber,
                     userID,
                     ownerID, parentTweetID, subTweets,
-                    sourceTweetID, retweetDate, isRetweeted);
-//            return new Tweet(ID, text, likes, likeNumber, retweets, retweetNumber, userID, ownerID, parentTweetID, isRetweeted);
+                    sourceTweetID, retweetDate, isRetweet);
+//            return new tweet(ID, text, likes, likeNumber, retweets, retweetNumber, userID, ownerID, parentTweetID, isRetweet);
         }
+    }
+
+
+    @Override
+    public MemoType getMemoType() {
+        return MemoType.tweet;
     }
 
 
@@ -178,6 +184,7 @@ public class Tweet implements Memo {
     /**
      * Getters and Setters
      */
+
 
 
     public String getID() {
@@ -300,12 +307,12 @@ public class Tweet implements Memo {
         this.retweetDate = retweetDate;
     }
 
-    public boolean isRetweeted() {
-        return isRetweeted;
+    public boolean isRetweet() {
+        return isRetweet;
     }
 
-    public void setRetweeted(boolean retweeted) {
-        isRetweeted = retweeted;
+    public void setRetweet(boolean retweet) {
+        isRetweet = retweet;
     }
 
 
