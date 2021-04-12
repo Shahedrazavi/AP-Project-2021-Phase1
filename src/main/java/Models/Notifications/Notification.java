@@ -27,8 +27,8 @@ public class Notification {
     }
 
 
-    public boolean isSeen() {
-        return isSeen;
+    public boolean isNotSeen() {
+        return !isSeen;
     }
 
     public void setSeen(boolean seen) {
@@ -65,5 +65,13 @@ public class Notification {
 
     public void setNotifType(NotifType notifType) {
         this.notifType = notifType;
+    }
+
+    public void setAsRead(){
+        setSeen(true);
+    }
+
+    public void setAsUnread(){
+        setSeen(false);
     }
 }

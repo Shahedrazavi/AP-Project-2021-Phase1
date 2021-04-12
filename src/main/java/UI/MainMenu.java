@@ -130,7 +130,6 @@ public class MainMenu extends InnerPage {
 
     }
 
-
     public void logout(){
         logger.logOut(user.getUsername(), user.getID());
 

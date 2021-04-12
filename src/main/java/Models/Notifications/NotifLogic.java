@@ -4,26 +4,17 @@ import Models.Notifications.NotifType.*;
 import Models.User;
 
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 
 public class NotifLogic {
 
     public int unreadNotifs(User user){
         int count = 0;
         for (Notification notif :user.getNotifications()){
-            if (!notif.isSeen()){
+            if (notif.isNotSeen()){
                 count++;
             }
         }
         return count;
-    }
-
-    public void setAsRead(Notification notification){
-        notification.setSeen(true);
-    }
-
-    public void setAsUnread(Notification notification){
-        notification.setSeen(false);
     }
 
     public void addNotif(User user , User fromUser , Notification.NotifType notifType){

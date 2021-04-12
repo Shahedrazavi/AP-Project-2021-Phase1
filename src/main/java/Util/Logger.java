@@ -138,4 +138,10 @@ public class Logger {
     public void newChatMsg(String chatRoomID , int userNumber){
         log("New Message sent by user number  \""+userNumber+"\" in the chatroom with ID: \"" + chatRoomID + "\".");
     }
+
+    public void notifRemove(String username , String userID){
+        log("User with username: \"" + username + "\" and ID: \"" + userID + "\" deleted a notification.");
+    }
+
+    
 }
