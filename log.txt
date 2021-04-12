@@ -163,3 +163,56 @@
 2021-04-12T20:34:00.735076600: Application started.
 2021-04-12T20:34:10.631355500: User with username: "jelighe" and ID: "1" logged in.
 2021-04-12T20:35:22.392977600: User with username: "jelighe" and ID: "1" made a new Memo.
+2021-04-12T20:46:43.048744200: Application started.
+2021-04-12T20:46:56.973412400: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T20:48:42.402738900: Application started.
+2021-04-12T20:48:50.306567300: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T20:48:59.406162500: User with username: "jelighe" and ID: "1" made a new Memo.
+2021-04-12T20:50:29.496880800: Application started.
+2021-04-12T20:50:55.509461600: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T20:51:01.570385800: User with username: "jelighe" and ID: "1" made a new Memo.
+2021-04-12T20:51:46.823936600: Application started.
+2021-04-12T20:51:54.704063500: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T20:52:38.130662300: User with username: "jelighe" and ID: "1" made a new Memo.
+2021-04-12T20:52:55.305100: Application started.
+2021-04-12T20:53:06.223357500: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T20:53:38.554883300: User with username: "jelighe" and ID: "1" logged out.
+2021-04-12T20:53:38.555811800: Application started.
+2021-04-12T20:53:41.583279600: Application closed.
+2021-04-12T20:55:42.559343: Application started.
+2021-04-12T21:02:43.394350500: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T21:03:02.573715100: User with username: "jelighe" and ID: "1" made a new Memo.
+2021-04-12T21:14:08.725390400: Application started.
+2021-04-12T21:14:21.441910: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T21:14:39.614005900: User with username: "jelighe" and ID: "1" made a new Memo.
+2021-04-12T21:15:47.252470600: User with username: "jelighe" and ID: "1" followed user with username: "smrazavi" and ID: "2".
+2021-04-12T21:16:53.809989: User with username: "jelighe" and ID: "1" logged out.
+2021-04-12T21:16:53.810933200: Application started.
+2021-04-12T21:19:20.982823800: User with username: "mortrest" and ID: "3" created a new account.
+2021-04-12T21:19:20.983811300: Application started.
+2021-04-12T21:19:33.085304800: User with username: "mortrest" and ID: "3" logged in.
+2021-04-12T21:19:50.239696600: User with username: "mortrest" and ID: "3" made a new tweet with ID: "1".
+2021-04-12T21:19:50.240696: User with username: "mortrest" and ID: "3" changed bio.
+2021-04-12T21:20:08.409834700: User with username: "mortrest" and ID: "3" blocked user with username: "smrazavi" and ID: "2".
+2021-04-12T21:20:36.678782: User with username: "mortrest" and ID: "3" logged out.
+2021-04-12T21:20:36.679690200: Application started.
+2021-04-12T21:20:48.767612900: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T21:21:00.892357500: User with username: "jelighe" and ID: "1" requested from user with username: "mortrest" and ID: "3".
+2021-04-12T21:21:06.940874500: User with username: "jelighe" and ID: "1" logged out.
+2021-04-12T21:21:06.940874500: Application started.
+2021-04-12T21:21:16.028423100: User with username: "mortrest" and ID: "3" logged in.
+2021-04-12T21:21:32.173810300: User with username: "mortrest" and ID: "3" deleted a notification.
+2021-04-12T21:21:53.386850600: User with username: "mortrest" and ID: "3" accepted user with username: "jelighe" and ID: "1".
+2021-04-12T21:21:53.386850600: User with username: "jelighe" and ID: "1" followed user with username: "mortrest" and ID: "3".
+2021-04-12T21:22:05.495407600: User with username: "mortrest" and ID: "3" logged out.
+2021-04-12T21:22:05.495407600: Application started.
+2021-04-12T21:22:13.571829400: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T21:24:16.662841900: User with username: "jelighe" and ID: "1" deactivated account.
+2021-04-12T21:24:16.662841900: Application started.
+2021-04-12T21:24:26.745096300: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T21:24:36.845709200: User with username: "jelighe" and ID: "1" activated account.
+2021-04-12T21:24:36.845709200: Application started.
+2021-04-12T21:24:47.955976800: User with username: "mortrest" and ID: "3" logged in.
+2021-04-12T21:25:31.331238300: User with username: "mortrest" and ID: "3" logged out.
+2021-04-12T21:25:31.331238300: Application started.
+2021-04-12T21:25:38.397364: Application closed.

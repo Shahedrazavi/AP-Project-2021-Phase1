@@ -40,12 +40,26 @@ Models/Notifications/Notification.java
  Models.Notifications.Notification$NotifType
 Models/ChatRoom.java
  Models.ChatRoom
+Main.java
+ Main
+Util/Logger.java
+ Util.Logger
+Models/TweetLogic.java
+ Models.TweetLogic
+Models/UserLogic.java
+ Models.UserLogic
+Models/Tweet.java
+ Models.Tweet
+ Models.Tweet$TweetBuilder
+ Models.Tweet$TweetType
 UI/Explore.java
  UI.Explore
 UI/Search.java
  UI.Search
 UI/InnerPage.java
  UI.InnerPage
+Util/CommandReader.java
+ Util.CommandReader
 UI/MessagesPage.java
  UI.MessagesPage
 UI/OthersProfile.java
@@ -60,25 +74,13 @@ UI/Settings.java
  UI.Settings
 UI/SignIn.java
  UI.SignIn
-Main.java
- Main
 UI/NotificationsPage.java
  UI.NotificationsPage
 UI/Timeline.java
  UI.Timeline
-Models/TweetLogic.java
- Models.TweetLogic
-Models/UserLogic.java
- Models.UserLogic
-Models/Tweet.java
- Models.Tweet
- Models.Tweet$TweetBuilder
- Models.Tweet$TweetType
 UI/MainMenu.java
  UI.MainMenu
 UI/Page.java
  UI.Page
-Util/Logger.java
- Util.Logger
 UI/FirstPage.java
  UI.FirstPage

@@ -174,7 +174,10 @@ public class MessagesPage extends InnerPage{
 
         boolean condition = true;
         while (condition){
+            System.out.println("BOOOOOGH");
             String input = sc.nextLine();
+            System.out.println(input);
+            System.out.println("Vaysa");
             if (input.equals("back")) {
                 condition = false;
 
@@ -186,6 +189,8 @@ public class MessagesPage extends InnerPage{
                 Message message = new Message(input);
                 user.addMemo(message);
                 logger.newMemo(user.getUsername(), user.getID());
+
+                printer.println("Memo saved");
 
                 memos();
             }

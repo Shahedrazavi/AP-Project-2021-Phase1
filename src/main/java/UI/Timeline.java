@@ -24,6 +24,7 @@ public class Timeline extends InnerPage{
         else{
             LinkedList<Tweet> tweets = userLogic.getAllFollowingsTweets(user);
             tweetShower(tweets,true);
+
         }
 
     }

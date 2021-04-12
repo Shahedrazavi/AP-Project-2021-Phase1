@@ -24,9 +24,17 @@ public class UserLogic {
         this.modelLoader = modelLoader;
         this.notifLogic = notifLogic;
         this.tweetLogic = tweetLogic;
-        this.usersListLogic = usersListLogic;
+        this.usersListLogic = modelLoader;
         this.chatLogic = chatLogic;
     }
+
+
+    private TweetLogic loadTweetLogic(){
+
+    }
+
+
+
 
     public String getLastID() {
         if (lastID.equals("")){
