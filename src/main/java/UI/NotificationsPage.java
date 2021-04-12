@@ -15,6 +15,8 @@ public class NotificationsPage extends InnerPage{
 
     @Override
     public void firstView() {
+        userLogic.updateLastSeen(user);
+
         printer.sectionShower("Notifications");
         int unreadNotifs = userLogic.getNotifLogic().unreadNotifs(user);
         printer.showHighlightedMsg("You have " + unreadNotifs + " unread notifications");
@@ -117,6 +119,7 @@ public class NotificationsPage extends InnerPage{
                     //Remove Notification//
                     userLogic.getNotifLogic().removeNotif(user,notification);
                     logger.notifRemove(user.getUsername(),user.getID());
+                    userLogic.save();
 
                     if (cursor == (list.size()-1)){
                         cursor--;

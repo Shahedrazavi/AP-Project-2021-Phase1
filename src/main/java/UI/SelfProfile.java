@@ -15,6 +15,8 @@ public class SelfProfile extends Profile{
 
     @Override
     public void firstView() {
+        userLogic.updateLastSeen(user);
+
         printer.sectionShower("Your Profile");
         printer.println(user.getProfileName());
         printer.println("@"+user.getUsername());
@@ -129,6 +131,8 @@ public class SelfProfile extends Profile{
             }
         }
 
+        userLogic.save();
+
     }
 
     public void selfTweetsViewer(){
@@ -147,7 +151,7 @@ public class SelfProfile extends Profile{
         while (condition){
             if (list.isEmpty()){
                 condition = false;
-                printer.println("There are no chats.");
+                printer.println("No tweets.");
                 printer.println("Enter any input to go back");
                 String input = sc.next();
                 if (isFirst){
@@ -240,7 +244,7 @@ public class SelfProfile extends Profile{
                 }
                 //Like//
                 else if (input.equals("3")){
-                    if (tweet.hasLiked(user.getID())){
+                    if (!tweet.hasLiked(user.getID())){
 
                         userLogic.getTweetLogic().likeTweet(tweet,user);
                         logger.like(user.getUsername(),user.getID(),tweet.getID(),true);
@@ -251,10 +255,12 @@ public class SelfProfile extends Profile{
                     else {
                         printer.println("You have already liked this tweet.");
                     }
+
+                    userLogic.save();
                 }
                 //Retweet//
                 else if (input.equals("4")){
-                    if (tweet.hasRetweeted(user.getID())){
+                    if (!tweet.hasRetweeted(user.getID())){
 
                         Tweet retweet = userLogic.getTweetLogic().retweet(tweet,user);
                         logger.retweet(user.getUsername(),user.getID(),tweet.getID(),retweet.getID());
@@ -264,6 +270,8 @@ public class SelfProfile extends Profile{
                     else {
                         printer.println("You have already retweeted this tweet.");
                     }
+
+                    userLogic.save();
                 }
                 //Comment//
                 else if (input.equals("5")){
@@ -276,6 +284,8 @@ public class SelfProfile extends Profile{
 
                         printer.println("Comment sent!");
                     }
+
+                    userLogic.save();
                 }
                 //Show Comments//
                 else if (input.equals("6")){
@@ -292,6 +302,8 @@ public class SelfProfile extends Profile{
                 else if (input.equals("7")){
                     user.addMemo(tweet);
                     logger.newMemo(user.getUsername(), user.getID());
+
+                    userLogic.save();
 
                     printer.println("Tweet saved!");
                 }
@@ -472,6 +484,8 @@ public class SelfProfile extends Profile{
                         cursor--;
                     }
 
+                    userLogic.save();
+
                 }
                 else {
                     printer.println("Invalid input, please try again");
@@ -543,6 +557,8 @@ public class SelfProfile extends Profile{
                     if (cursor == (list.size()-1)){
                         cursor--;
                     }
+
+                    userLogic.save();
 
                 }
                 else {
@@ -618,6 +634,8 @@ public class SelfProfile extends Profile{
                         cursor--;
                     }
 
+                    userLogic.save();
+
                 }
                 else {
                     printer.println("Invalid input, please try again");
@@ -691,6 +709,8 @@ public class SelfProfile extends Profile{
                     if (cursor == (list.size()-1)){
                         cursor--;
                     }
+
+                    userLogic.save();
 
                 }
                 else {
@@ -889,6 +909,8 @@ public class SelfProfile extends Profile{
                         cursor--;
                     }
 
+                    userLogic.save();
+
                 }
                 else {
                     printer.println("Invalid input, please try again");
@@ -961,6 +983,9 @@ public class SelfProfile extends Profile{
 
                         printer.println("Added to Group");
                     }
+
+                    userLogic.save();
+
                 }
                 else {
                     printer.println("Invalid input, please try again");
@@ -990,6 +1015,8 @@ public class SelfProfile extends Profile{
 
                 groups();
             }
+
+            userLogic.save();
         }
     }
 
@@ -1059,6 +1086,8 @@ public class SelfProfile extends Profile{
                         cursor--;
                     }
 
+                    userLogic.save();
+
                 }
                 else if (input.equals("4")){
 
@@ -1072,6 +1101,8 @@ public class SelfProfile extends Profile{
                     if (cursor == (list.size()-1)){
                         cursor--;
                     }
+
+                    userLogic.save();
 
                 }
                 else {
@@ -1162,6 +1193,8 @@ public class SelfProfile extends Profile{
             }
         }
 
+        userLogic.save();
+
     }
 
     public void editBio(){
@@ -1188,8 +1221,7 @@ public class SelfProfile extends Profile{
             }
         }
 
-
-
+        userLogic.save();
 
     }
 }

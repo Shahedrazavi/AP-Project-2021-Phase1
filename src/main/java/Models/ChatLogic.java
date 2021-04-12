@@ -28,6 +28,10 @@ public class ChatLogic {
         return chatRooms;
     }
 
+    public void setChatRooms(LinkedList<ChatRoom> chatRooms) {
+        this.chatRooms = chatRooms;
+    }
+
     public void addToAllChatRooms(ChatRoom chatRoom){
         getAllChatRooms().add(chatRoom);
     }

@@ -18,20 +18,119 @@ public class UserLogic {
     private UsersListLogic usersListLogic;
     private ChatLogic chatLogic;
 
+    private Logger logger;
+
     public UserLogic(String lastID, LinkedList<User> users , ModelLoader modelLoader, NotifLogic notifLogic , TweetLogic tweetLogic , UsersListLogic usersListLogic , ChatLogic chatLogic) {
         this.lastID = lastID;
         this.users = users;
         this.modelLoader = modelLoader;
         this.notifLogic = notifLogic;
         this.tweetLogic = tweetLogic;
-        this.usersListLogic = modelLoader;
+        this.usersListLogic = usersListLogic;
         this.chatLogic = chatLogic;
+        this.logger = Logger.getLogger();
+    }
+
+    public void initialize(){
+        loadUsersListLogic();
+        loadChatLogic();
+        loadTweetLogic();
+        loadUserLogic();
+    }
+
+    public void save(){
+        saveUsersListLogic();
+        saveChatLogic();
+        saveTweetLogic();
+        saveUserLogic();
+    }
+
+    private void loadTweetLogic(){
+        tweetLogic = modelLoader.loadTweetLogic();
+        if (tweetLogic.getAllTweets()==null){
+            tweetLogic.setTweets(new LinkedList<>());
+        }
+        logger.loadTweetLogic();
+    }
+
+    private void saveTweetLogic(){
+        modelLoader.saveTweetLogic(tweetLogic);
+        logger.saveTweetLogic();
+    }
+
+    private void loadUsersListLogic(){
+        usersListLogic = modelLoader.loadUsersListLogic();
+        if (usersListLogic.getAllUsersList()==null){
+            usersListLogic.setUsersLists(new LinkedList<>());
+        }
+        logger.loadUsersListLogic();
+    }
+
+    private void saveUsersListLogic(){
+        modelLoader.saveUsersListLogic(usersListLogic);
+        logger.saveUsersListLogic();
+    }
+
+    private void loadChatLogic(){
+        chatLogic = modelLoader.loadChatLogic();
+        if (chatLogic.getAllChatRooms()==null){
+            chatLogic.setChatRooms(new LinkedList<>());
+        }
+        logger.loadChatLogic();
+    }
+
+    private void saveChatLogic(){
+        modelLoader.saveChatLogic(chatLogic);
+        logger.saveChatLogic();
+    }
+
+    private void loadUserLogic(){
+        String lastID = modelLoader.loadUserLogicLastID();
+        LinkedList<User> users = modelLoader.loadUserLogicUsers();
+
+        setLastID(lastID);
+        setUsers(users);
+
+        if (getAllUsers()==null){
+            setUsers(new LinkedList<>());
+        }
+
+        for (User user : this.users){
+            String userID = user.getID();
+
+            for ( UsersList usersList : getUsersListLogic().getAllUsersList()){
+                if (usersList.getOwnerID().equals(userID)){
+                    if (!user.getUsersLists().contains(usersList)){
+                        user.addUserList(usersList);
+                    }
+                }
+            }
+            for ( Tweet tweet : getTweetLogic().getAllTweets()){
+                if (tweet.getUserID().equals(userID)){
+                    if(!user.getTweets().contains(tweet.getID())){
+                        user.getTweets().add(tweet.getID());
+                    }
+                }
+            }
+            for ( ChatRoom chatRoom : getChatLogic().getAllChatRooms()){
+                if (chatRoom.getUser1ID().equals(userID) || chatRoom.getUser2ID().equals(userID)){
+                    if(!user.getChatRooms().contains(chatRoom.getID())){
+                        user.getChatRooms().add(chatRoom.getID());
+                    }
+                }
+            }
+        }
+
+        logger.loadUserLogic();
+    }
+
+    private void saveUserLogic(){
+        modelLoader.saveUserLogic(this);
+        logger.saveUserLogic();
     }
 
 
-    private TweetLogic loadTweetLogic(){
 
-    }
 
 
 
@@ -77,7 +176,9 @@ public class UserLogic {
         getAllUsers().remove(user);
     }
 
-
+    public void setUsers(LinkedList<User> users) {
+        this.users = users;
+    }
 
     public User IDtoUser(String ID){
         for (User user : getAllUsers()){

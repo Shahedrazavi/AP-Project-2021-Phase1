@@ -14,7 +14,9 @@ public class Explore extends InnerPage{
 
     @Override
     public void firstView() {
-        printer.sectionShower("Exploooore");
+        userLogic.updateLastSeen(user);
+
+        printer.sectionShower("Exploooore!!!");
         printer.println("Type anything to continue (by typing \"back\" you will return to main menu)");
         String dummy = sc.nextLine();
         if (dummy.equals("back")){
@@ -38,7 +40,7 @@ public class Explore extends InnerPage{
         while (condition){
             if (list.isEmpty()){
                 condition = false;
-                printer.println("There are no chats.");
+                printer.println("No tweets.");
                 printer.println("Enter any input to go back");
                 String input = sc.next();
                 if (isFirst){
@@ -132,7 +134,7 @@ public class Explore extends InnerPage{
                 }
                 //Like//
                 else if (input.equals("3")){
-                    if (tweet.hasLiked(user.getID())){
+                    if (!tweet.hasLiked(user.getID())){
 
                         userLogic.getTweetLogic().likeTweet(tweet,user);
                         logger.like(user.getUsername(),user.getID(),tweet.getID(),true);
@@ -143,10 +145,12 @@ public class Explore extends InnerPage{
                     else {
                         printer.println("You have already liked this tweet.");
                     }
+
+                    userLogic.save();
                 }
                 //Retweet//
                 else if (input.equals("4")){
-                    if (tweet.hasRetweeted(user.getID())){
+                    if (!tweet.hasRetweeted(user.getID())){
 
                         Tweet retweet = userLogic.getTweetLogic().retweet(tweet,user);
                         logger.retweet(user.getUsername(),user.getID(),tweet.getID(),retweet.getID());
@@ -156,6 +160,8 @@ public class Explore extends InnerPage{
                     else {
                         printer.println("You have already retweeted this tweet.");
                     }
+
+                    userLogic.save();
                 }
                 //Comment//
                 else if (input.equals("5")){
@@ -168,6 +174,8 @@ public class Explore extends InnerPage{
 
                         printer.println("Comment sent!");
                     }
+
+                    userLogic.save();
                 }
                 //Show Comments//
                 else if (input.equals("6")){
@@ -186,6 +194,8 @@ public class Explore extends InnerPage{
                     logger.newMemo(user.getUsername(), user.getID());
 
                     printer.println("Tweet saved!");
+
+                    userLogic.save();
                 }
                 //Report//
                 else if (input.equals("8")){
@@ -218,6 +228,8 @@ public class Explore extends InnerPage{
 
                         printer.println("Muted the account");
                     }
+
+                    userLogic.save();
                 }
                 //Block//
                 else if (input.equals("11")){
@@ -235,6 +247,8 @@ public class Explore extends InnerPage{
 
                         printer.println("Blocked the account");
                     }
+
+                    userLogic.save();
                 }
                 //Invalid//
                 else {

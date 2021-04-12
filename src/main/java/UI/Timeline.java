@@ -41,7 +41,7 @@ public class Timeline extends InnerPage{
         while (condition){
             if (list.isEmpty()){
                 condition = false;
-                printer.println("There are no chats.");
+                printer.println("No tweets.");
                 printer.println("Enter any input to go back");
                 String input = sc.next();
                 if (isFirst){
@@ -135,7 +135,7 @@ public class Timeline extends InnerPage{
                 }
                 //Like//
                 else if (input.equals("3")){
-                    if (tweet.hasLiked(user.getID())){
+                    if (!tweet.hasLiked(user.getID())){
 
                         userLogic.getTweetLogic().likeTweet(tweet,user);
                         logger.like(user.getUsername(),user.getID(),tweet.getID(),true);
@@ -146,10 +146,13 @@ public class Timeline extends InnerPage{
                     else {
                         printer.println("You have already liked this tweet.");
                     }
+
+                    userLogic.save();
+
                 }
                 //Retweet//
                 else if (input.equals("4")){
-                    if (tweet.hasRetweeted(user.getID())){
+                    if (!tweet.hasRetweeted(user.getID())){
 
                         Tweet retweet = userLogic.getTweetLogic().retweet(tweet,user);
                         logger.retweet(user.getUsername(),user.getID(),tweet.getID(),retweet.getID());
@@ -159,6 +162,9 @@ public class Timeline extends InnerPage{
                     else {
                         printer.println("You have already retweeted this tweet.");
                     }
+
+                    userLogic.save();
+
                 }
                 //Comment//
                 else if (input.equals("5")){
@@ -171,6 +177,9 @@ public class Timeline extends InnerPage{
 
                         printer.println("Comment sent!");
                     }
+
+                    userLogic.save();
+
                 }
                 //Show Comments//
                 else if (input.equals("6")){
@@ -182,11 +191,16 @@ public class Timeline extends InnerPage{
                         LinkedList<Tweet> filteredComments = userLogic.tweetFilter(user,comments,false);
                         tweetShower(filteredComments,false);
                     }
+
+                    userLogic.save();
+
                 }
                 //Save//
                 else if (input.equals("7")){
                     user.addMemo(tweet);
                     logger.newMemo(user.getUsername(), user.getID());
+
+                    userLogic.save();
 
                     printer.println("Tweet saved!");
                 }
@@ -221,6 +235,8 @@ public class Timeline extends InnerPage{
 
                         printer.println("Muted the account");
                     }
+
+                    userLogic.save();
                 }
                 //Block//
                 else if (input.equals("11")){
@@ -238,6 +254,8 @@ public class Timeline extends InnerPage{
 
                         printer.println("Blocked the account");
                     }
+
+                    userLogic.save();
                 }
                 //Invalid//
                 else {

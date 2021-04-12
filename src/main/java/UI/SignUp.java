@@ -275,6 +275,8 @@ public class SignUp extends Page {
             else {
                 condition = false;
 
+                profileName = input;
+
                 setPrivacy();
             }
         }
@@ -363,7 +365,7 @@ public class SignUp extends Page {
         String username = user.getUsername();
         String userID = user.getID();
         logger.signUp(username,userID);
-
+        userLogic.save();
 
         String password = user.getPassword();
         System.out.println("username = " + username);

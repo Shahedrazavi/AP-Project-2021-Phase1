@@ -163,4 +163,31 @@ public class Logger {
     public void comment(String username , String userID , String tweetID , String commentID){
         log("User with username: \"" + username + "\" and ID: \"" + userID + "\" retweeted tweet with ID: \"" + tweetID +"\".(Comment ID is: \""+ commentID + "\")");
     }
+
+    public void loadTweetLogic(){
+        log(" Tweet Logic loaded");
+    }
+
+    public void saveTweetLogic(){
+        log(" Tweet Logic saved");
+    }
+    public void loadUsersListLogic(){
+        log(" Users list Logic loaded");
+    }
+    public void saveUsersListLogic(){
+        log(" Users list Logic saved");
+    }
+    public void loadChatLogic(){
+        log(" Chat Logic loaded");
+    }
+    public void saveChatLogic(){
+        log(" Chat Logic saved");
+    }
+    public void loadUserLogic(){
+        log(" User Logic loaded");
+    }
+    public void saveUserLogic(){
+        log(" User Logic saved");
+    }
+
 }

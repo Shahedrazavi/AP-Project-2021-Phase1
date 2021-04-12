@@ -27,6 +27,10 @@ public class UsersListLogic {
         return usersLists;
     }
 
+    public void setUsersLists(LinkedList<UsersList> usersLists) {
+        this.usersLists = usersLists;
+    }
+
     public void addToAllUsersLists(UsersList usersList){
         getAllUsersList().add(usersList);
     }

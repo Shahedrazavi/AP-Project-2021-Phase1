@@ -15,72 +15,72 @@ Models/Memo.java
 Models/ChatMessage.java
  Models.ChatMessage
  Models.ChatMessage$Owner
-Util/ModelLoader.java
- Util.ModelLoader
+Models/Notifications/Notification.java
+ Models.Notifications.Notification
+ Models.Notifications.Notification$NotifType
 Util/CLI.java
  Util.CLI
 Models/Notifications/NotifType/RequestNotification.java
  Models.Notifications.NotifType.RequestNotification
+Models/ChatRoom.java
+ Models.ChatRoom
+Util/CommandReader.java
+ Util.CommandReader
+Models/Notifications/NotifType/FollowNotification.java
+ Models.Notifications.NotifType.FollowNotification
+Models/Notifications/NotifType/UnfollowNotification.java
+ Models.Notifications.NotifType.UnfollowNotification
+Util/Logger.java
+ Util.Logger
+Main.java
+ Main
+Models/UsersListLogic.java
+ Models.UsersListLogic
+Util/ModelLoader.java
+ Util.ModelLoader
+UI/InnerPage.java
+ UI.InnerPage
+Models/UserLogic.java
+ Models.UserLogic
 Models/User.java
  Models.User
  Models.User$LastSeenType
  Models.User$UserBuilder
+Models/TweetLogic.java
+ Models.TweetLogic
+UI/Page.java
+ UI.Page
 Models/ChatLogic.java
  Models.ChatLogic
 Models/Notifications/NotifLogic.java
  Models.Notifications.NotifLogic
-Models/Notifications/NotifType/UnfollowNotification.java
- Models.Notifications.NotifType.UnfollowNotification
-Models/Notifications/NotifType/FollowNotification.java
- Models.Notifications.NotifType.FollowNotification
-Models/UsersListLogic.java
- Models.UsersListLogic
-Models/Notifications/Notification.java
- Models.Notifications.Notification
- Models.Notifications.Notification$NotifType
-Models/ChatRoom.java
- Models.ChatRoom
-Main.java
- Main
-Util/Logger.java
- Util.Logger
-Models/TweetLogic.java
- Models.TweetLogic
-Models/UserLogic.java
- Models.UserLogic
 Models/Tweet.java
  Models.Tweet
  Models.Tweet$TweetBuilder
  Models.Tweet$TweetType
+UI/SignUp.java
+ UI.SignUp
 UI/Explore.java
  UI.Explore
+UI/SignIn.java
+ UI.SignIn
 UI/Search.java
  UI.Search
-UI/InnerPage.java
- UI.InnerPage
-Util/CommandReader.java
- Util.CommandReader
+UI/NotificationsPage.java
+ UI.NotificationsPage
+UI/Timeline.java
+ UI.Timeline
 UI/MessagesPage.java
  UI.MessagesPage
 UI/OthersProfile.java
  UI.OthersProfile
 UI/SelfProfile.java
  UI.SelfProfile
-UI/SignUp.java
- UI.SignUp
-UI/Profile.java
- UI.Profile
-UI/Settings.java
- UI.Settings
-UI/SignIn.java
- UI.SignIn
-UI/NotificationsPage.java
- UI.NotificationsPage
-UI/Timeline.java
- UI.Timeline
 UI/MainMenu.java
  UI.MainMenu
-UI/Page.java
- UI.Page
+UI/Profile.java
+ UI.Profile
 UI/FirstPage.java
  UI.FirstPage
+UI/Settings.java
+ UI.Settings

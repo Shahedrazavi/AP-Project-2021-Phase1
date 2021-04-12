@@ -59,6 +59,11 @@ public class User {
         no_one
     }
 
+    public User() {
+        this.tweets = new LinkedList<>();
+        this.chatRooms = new LinkedList<>();
+        this.usersLists = new LinkedList<>();
+    }
 
     public User(String ID,
                 String username, String password,
@@ -604,4 +609,7 @@ public class User {
         getMemos().add(memo);
     }
 
+    public void addUserList(UsersList usersList){
+        getUsersLists().add(usersList);
+    }
 }

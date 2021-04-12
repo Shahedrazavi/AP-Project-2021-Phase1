@@ -11,6 +11,8 @@ public class Search extends InnerPage{
 
     @Override
     public void firstView() {
+        userLogic.updateLastSeen(user);
+
         printer.sectionShower("Search");
         printer.println("Enter the username you want to search: (Enter \"back\" if you want to go back to main menu)");
 

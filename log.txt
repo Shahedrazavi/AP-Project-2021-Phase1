@@ -216,3 +216,98 @@
 2021-04-12T21:25:31.331238300: User with username: "mortrest" and ID: "3" logged out.
 2021-04-12T21:25:31.331238300: Application started.
 2021-04-12T21:25:38.397364: Application closed.
+2021-04-12T23:14:16.117056500:  Users list Logic loaded
+2021-04-12T23:14:16.131017700:  Chat Logic loaded
+2021-04-12T23:14:16.131017700:  Tweet Logic loaded
+2021-04-12T23:20:00.269435:  Users list Logic loaded
+2021-04-12T23:20:00.283397300:  Chat Logic loaded
+2021-04-12T23:20:00.284396600:  Tweet Logic loaded
+2021-04-12T23:20:00.286389300:  User Logic loaded
+2021-04-12T23:20:00.288383200: Application started.
+2021-04-12T23:20:58.587228300: Application started.
+2021-04-12T23:21:05.661890200: Application started.
+2021-04-12T23:21:12.734420800: Application started.
+2021-04-12T23:22:02.279120500: User with username: "jelighe" and ID: "1" created a new account.
+2021-04-12T23:22:02.279120500:  Users list Logic saved
+2021-04-12T23:22:02.280119500:  Chat Logic saved
+2021-04-12T23:22:02.281116200:  Tweet Logic saved
+2021-04-12T23:22:02.310951900:  User Logic saved
+2021-04-12T23:22:02.312947100: Application started.
+2021-04-12T23:22:34.579862300: Application closed.
+2021-04-12T23:22:37.594899900:  Users list Logic loaded
+2021-04-12T23:22:37.608863600:  Chat Logic loaded
+2021-04-12T23:22:37.608863600:  Tweet Logic loaded
+2021-04-12T23:22:37.649829500:  User Logic loaded
+2021-04-12T23:22:37.654815400: Application started.
+2021-04-12T23:22:56.525363200: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T23:22:58.544810200: User with username: "jelighe" and ID: "1" logged out.
+2021-04-12T23:22:58.544810200: Application started.
+2021-04-12T23:23:09.652994: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T23:28:15.203822700:  Users list Logic loaded
+2021-04-12T23:28:15.216792600:  Chat Logic loaded
+2021-04-12T23:28:15.217796:  Tweet Logic loaded
+2021-04-12T23:28:15.259710300:  User Logic loaded
+2021-04-12T23:28:15.262704500: Application started.
+2021-04-12T23:29:00.405835300: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T23:35:26.986015300:  Users list Logic loaded
+2021-04-12T23:35:26.996983600:  Chat Logic loaded
+2021-04-12T23:35:26.998018:  Tweet Logic loaded
+2021-04-12T23:35:27.057345800:  User Logic loaded
+2021-04-12T23:35:27.061373200: Application started.
+2021-04-12T23:35:36.813109500: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T23:37:33.922374500:  Users list Logic loaded
+2021-04-12T23:37:33.936937100:  Chat Logic loaded
+2021-04-12T23:37:33.936937100:  Tweet Logic loaded
+2021-04-12T23:37:33.982653100:  User Logic loaded
+2021-04-12T23:37:33.985644800: Application started.
+2021-04-12T23:37:47.747811800: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T23:38:04.893969: User with username: "jelighe" and ID: "1" made a new tweet with ID: "1".
+2021-04-12T23:38:04.893969: User with username: "jelighe" and ID: "1" changed bio.
+2021-04-12T23:42:59.733361200: User with username: "jelighe" and ID: "1" logged out.
+2021-04-12T23:42:59.734283900: Application started.
+2021-04-12T23:43:01.751226800: Application closed.
+2021-04-12T23:44:49.484030900:  Users list Logic loaded
+2021-04-12T23:44:49.499984900:  Chat Logic loaded
+2021-04-12T23:44:49.500981500:  Tweet Logic loaded
+2021-04-12T23:44:49.503977600:  User Logic loaded
+2021-04-12T23:44:49.507962700: Application started.
+2021-04-12T23:45:09.375198800: Application started.
+2021-04-12T23:46:03.886434700: User with username: "shahed" and ID: "2" created a new account.
+2021-04-12T23:46:03.887432100:  Users list Logic saved
+2021-04-12T23:46:03.888429600:  Chat Logic saved
+2021-04-12T23:46:03.888429600:  Tweet Logic saved
+2021-04-12T23:46:03.911368100:  User Logic saved
+2021-04-12T23:46:03.912364900: Application started.
+2021-04-12T23:46:15.990365700: User with username: "shahed" and ID: "2" logged in.
+2021-04-12T23:47:08.478905100: User with username: "shahed" and ID: "2" logged out.
+2021-04-12T23:47:08.478905100: Application started.
+2021-04-12T23:47:10.495581200: Application closed.
+2021-04-13T00:40:01.689032100:  Users list Logic loaded
+2021-04-13T00:40:01.708174700:  Chat Logic loaded
+2021-04-13T00:40:01.708688700:  Tweet Logic loaded
+2021-04-13T00:40:01.755329800:  User Logic loaded
+2021-04-13T00:40:01.757324700: Application started.
+2021-04-13T00:40:15.524652500: Application started.
+2021-04-13T00:42:22.733876100: User with username: "chaay" and ID: "3" created a new account.
+2021-04-13T00:42:22.734838:  Users list Logic saved
+2021-04-13T00:42:22.734838:  Chat Logic saved
+2021-04-13T00:42:22.735840700:  Tweet Logic saved
+2021-04-13T00:42:22.744434800:  User Logic saved
+2021-04-13T00:42:22.746431400: Application started.
+2021-04-13T00:42:36.883768400: User with username: "chaay" and ID: "3" logged in.
+2021-04-13T00:42:56.055584500: User with username: "chaay" and ID: "3" made a new tweet with ID: "1".
+2021-04-13T00:42:56.056544300: User with username: "chaay" and ID: "3" changed bio.
+2021-04-13T00:47:29.744834700: User with username: "chaay" and ID: "3" followed user with username: "shahed" and ID: "2".
+2021-04-13T00:47:29.745831100:  Users list Logic saved
+2021-04-13T00:47:29.745831100:  Chat Logic saved
+2021-04-13T00:47:29.748823500:  Tweet Logic saved
+2021-04-13T00:47:29.752868700:  User Logic saved
+2021-04-13T00:48:15.184316600: User with username: "chaay" and ID: "3" logged out.
+2021-04-13T00:48:15.184316600: Application started.
+2021-04-13T00:51:32.208526: User with username: "rushmore" and ID: "4" created a new account.
+2021-04-13T00:51:32.209529600:  Users list Logic saved
+2021-04-13T00:51:32.209529600:  Chat Logic saved
+2021-04-13T00:51:32.212523700:  Tweet Logic saved
+2021-04-13T00:51:32.217504600:  User Logic saved
+2021-04-13T00:51:32.217504600: Application started.
+2021-04-13T00:51:42.301746600: Application closed.

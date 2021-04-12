@@ -15,6 +15,7 @@ public class SignIn extends Page{
 
     @Override
     public void firstView() {
+
         printer.sectionShower("Sign In");
         enterUsername();
     }

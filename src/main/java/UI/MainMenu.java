@@ -12,6 +12,8 @@ public class MainMenu extends InnerPage {
 
     @Override
     public void firstView() {
+        userLogic.updateLastSeen(user);
+
         printer.sectionShower("Welcome to Main Menu");
 
         if (user.isActive()){

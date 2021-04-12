@@ -12,6 +12,8 @@ public class Settings extends InnerPage{
 
     @Override
     public void firstView() {
+        userLogic.updateLastSeen(user);
+
         printer.sectionShower("Settings");
 
         options();
@@ -114,6 +116,9 @@ public class Settings extends InnerPage{
 
             options();
         }
+
+        userLogic.save();
+
     }
 
     public void privacy(){
@@ -155,6 +160,9 @@ public class Settings extends InnerPage{
             }
 
         }
+
+        userLogic.save();
+
     }
 
     public void lastSeen(){
@@ -176,6 +184,7 @@ public class Settings extends InnerPage{
 
                 user.setLastSeenType(User.LastSeenType.everyone);
                 logger.lastSeenType(user.getUsername(),user.getID(),"everyone");
+                userLogic.save();
 
                 printer.showHighlightedMsg("Changed last seen & online type successfully.");
 
@@ -186,6 +195,7 @@ public class Settings extends InnerPage{
 
                 user.setLastSeenType(User.LastSeenType.followings);
                 logger.lastSeenType(user.getUsername(),user.getID(),"followings");
+                userLogic.save();
 
                 printer.showHighlightedMsg("Changed last seen & online type successfully.");
 
@@ -196,6 +206,7 @@ public class Settings extends InnerPage{
 
                 user.setLastSeenType(User.LastSeenType.no_one);
                 logger.lastSeenType(user.getUsername(),user.getID(),"no_one");
+                userLogic.save();
 
                 printer.showHighlightedMsg("Changed last seen & online type successfully.");
 
@@ -205,6 +216,7 @@ public class Settings extends InnerPage{
                 printer.println("Invalid input, please try again");
             }
         }
+
     }
 
     public void activation(){
@@ -224,6 +236,7 @@ public class Settings extends InnerPage{
 
                     user.setActive(false);
                     logger.activation(user.getUsername(),user.getID(),"deactivated");
+                    userLogic.save();
 
                     printer.println("Deactivated Account, returning to first page. bye........");
 
@@ -256,6 +269,7 @@ public class Settings extends InnerPage{
 
                     user.setActive(true);
                     logger.activation(user.getUsername(),user.getID(),"activated");
+                    userLogic.save();
 
                     printer.println("Activated Account, returning to first page to log in again :)");
 
@@ -296,6 +310,7 @@ public class Settings extends InnerPage{
 
                 userLogic.deleteUser(user);
                 logger.delete(user.getUsername(),user.getID());
+                userLogic.save();
 
                 printer.println("Deleted Account, returning to first page. bye........");
 

@@ -14,6 +14,8 @@ public class MessagesPage extends InnerPage{
 
     @Override
     public void firstView() {
+        userLogic.updateLastSeen(user);
+
         printer.sectionShower("Messages");
         printer.println("Tip : If you press enter your message ends");
 
@@ -174,10 +176,8 @@ public class MessagesPage extends InnerPage{
 
         boolean condition = true;
         while (condition){
-            System.out.println("BOOOOOGH");
             String input = sc.nextLine();
             System.out.println(input);
-            System.out.println("Vaysa");
             if (input.equals("back")) {
                 condition = false;
 
@@ -189,6 +189,8 @@ public class MessagesPage extends InnerPage{
                 Message message = new Message(input);
                 user.addMemo(message);
                 logger.newMemo(user.getUsername(), user.getID());
+                userLogic.save();
+
 
                 printer.println("Memo saved");
 
@@ -320,6 +322,7 @@ public class MessagesPage extends InnerPage{
                 printer.println("[1] Next");
                 printer.println("[2] Previous");
                 printer.println("[3] New message");
+                printer.println("[4] save this message as Memo");
                 String input = sc.next();
                 if (input.equals("back") || input.equals("0")){
                     condition = false;
@@ -346,6 +349,15 @@ public class MessagesPage extends InnerPage{
                     condition = false;
 
                     newChatMsg(chatRoom,1);
+
+                }
+                else if (input.equals("4")){
+
+                    user.addMemo(msg);
+                    logger.newMemo(user.getUsername(), user.getID());
+                    userLogic.save();
+
+                    printer.println("Memo saved");
 
                 }
                 else {
@@ -500,6 +512,7 @@ public class MessagesPage extends InnerPage{
                     //MAKE NEW CHATROOM
                     ChatRoom chatRoom = userLogic.getChatLogic().newChatRoom(user,selectedUser);
                     logger.newChatroom(chatRoom.getID(),user.getID(),selectedUser.getID());
+                    userLogic.save();
 
                     printer.println("New Chatroom created");
 
@@ -530,6 +543,7 @@ public class MessagesPage extends InnerPage{
                 userLogic.getChatLogic().newChatMsg(chatRoom,text,2);
                 logger.newChatMsg(chatRoom.getID(),2);
             }
+            userLogic.save();
 
             printer.println("Message sent");
 
@@ -582,6 +596,8 @@ public class MessagesPage extends InnerPage{
                 logger.newChatMsg(chatRoom.getID(),2);
             }
         }
+
+        userLogic.save();
 
         printer.println("Messages sent successfully");
 

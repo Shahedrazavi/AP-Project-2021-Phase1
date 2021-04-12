@@ -15,6 +15,10 @@ public class TweetLogic {
         this.tweets = tweets;
     }
 
+    public TweetLogic(){
+        this.tweets = new LinkedList<>();
+    }
+
     public String getLastID() {
         if (lastID.equals("")){
             return "0";
@@ -28,6 +32,10 @@ public class TweetLogic {
 
     public LinkedList<Tweet> getAllTweets(){
         return tweets;
+    }
+
+    public void setTweets(LinkedList<Tweet> tweets) {
+        this.tweets = tweets;
     }
 
     public LinkedList<Tweet> getUserTweets(String userID){

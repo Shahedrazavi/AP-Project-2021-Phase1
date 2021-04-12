@@ -23,32 +23,33 @@ public class Main {
                 usersListLogic,
                 chatLogic);
 
+        userLogic.initialize();
 
 
-        String firstName = "sh";
-        String lastName = "raz";
-        String phoneNumber = "0930";
-        String email = "aa@b.com";
-        String username = "jelighe";
-        String password = "1234";
-        String profileName = "mrblue";
-        String bio = "";
-        boolean isPublic = true;
-        LocalDate birthday = LocalDate.of(2001,12,6);
-        User user1 = userLogic.newUser(username,password,profileName,firstName,lastName,email,phoneNumber,birthday,bio,isPublic);
-//        System.out.println("ID: "+ user.getID());
-
-        firstName = "mo";
-        lastName = "raz";
-        phoneNumber = "0912";
-        email = "bb@b.com";
-        username = "smrazavi";
-        password = "12345678";
-        profileName = "Dr.Razavizadeh";
-        bio = "Assistant Professor";
-        isPublic = true;
-        birthday = LocalDate.of(1975,1,1);
-        User user2 = userLogic.newUser(username,password,profileName,firstName,lastName,email,phoneNumber,birthday,bio,isPublic);
+//        String firstName = "sh";
+//        String lastName = "raz";
+//        String phoneNumber = "0930";
+//        String email = "aa@b.com";
+//        String username = "jelighe";
+//        String password = "1234";
+//        String profileName = "mrblue";
+//        String bio = "";
+//        boolean isPublic = true;
+//        LocalDate birthday = LocalDate.of(2001,12,6);
+//        User user1 = userLogic.newUser(username,password,profileName,firstName,lastName,email,phoneNumber,birthday,bio,isPublic);
+////        System.out.println("ID: "+ user.getID());
+//
+//        firstName = "mo";
+//        lastName = "raz";
+//        phoneNumber = "0912";
+//        email = "bb@b.com";
+//        username = "smrazavi";
+//        password = "12345678";
+//        profileName = "Dr.Razavizadeh";
+//        bio = "Assistant Professor";
+//        isPublic = true;
+//        birthday = LocalDate.of(1975,1,1);
+//        User user2 = userLogic.newUser(username,password,profileName,firstName,lastName,email,phoneNumber,birthday,bio,isPublic);
 
 
         FirstPage firstPage = new FirstPage(userLogic);
