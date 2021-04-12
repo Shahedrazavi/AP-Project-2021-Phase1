@@ -410,6 +410,53 @@ public class UserLogic {
         return null;
     }
 
+    public LinkedList<Tweet> tweetFilter(User user , LinkedList<Tweet> inputTweets , boolean mutedTweetsSwitch){
+        LinkedList<Tweet> filteredTweets = new LinkedList<>();
+
+        for (Tweet tweet : inputTweets){
+            User tweetSourceUser = IDtoUser(tweet.getOwnerID());
+            User tweetPublisherUser = IDtoUser(tweet.getUserID());
+
+            // Checking for private accounts //
+            boolean isSourcePrivate = canSeePrivate(user,tweetSourceUser);
+            boolean isPublisherPrivate = canSeePrivate(user,tweetPublisherUser);
+
+            // Checking for Blocks //
+            boolean isSourceBlocked = user.isInBlockedUsers(tweetSourceUser);
+            boolean isPublisherBlocked = user.isInBlockedUsers(tweetPublisherUser);
+            boolean isUserBlockedBySource = tweetSourceUser.isInBlockedUsers(user);
+            boolean isUserBlockedByPublisher = tweetPublisherUser.isInBlockedUsers(user);
+
+            //Checking for mute if it's necessary //
+            boolean isSourceMuted = true;
+            boolean isPublisherMuted = true;
+
+            if(mutedTweetsSwitch){
+                isSourceMuted = user.isInMutedUsers(tweetSourceUser);
+                isPublisherMuted = user.isInMutedUsers(tweetPublisherUser);
+            }
+
+            if (isSourcePrivate && isPublisherPrivate &&
+            isSourceBlocked && isPublisherBlocked && isUserBlockedBySource && isUserBlockedByPublisher &&
+            isSourceMuted && isPublisherMuted){
+                filteredTweets.add(tweet);
+            }
+        }
+
+        return filteredTweets;
+    }
+
+    public boolean canSeePrivate(User user , User target){
+        if (target.isPublic()){
+            return true;
+        }
+        else {
+            return target.isInFollowers(user);
+        }
+    }
+
+
+
     @Override
     public String toString() {
         if (this == null){

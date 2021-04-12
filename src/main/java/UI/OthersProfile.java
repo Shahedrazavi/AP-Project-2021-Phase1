@@ -73,16 +73,11 @@ public class OthersProfile extends Profile {
             printer.println(visitedUser.getBio());
             printer.nextLine();
 
-            if (visitedUser.isPublic()){
+            if (userLogic.canSeePrivate(user,visitedUser)){
                 mainPublicOptions();
             }
             else {
-                if (visitedUser.isInFollowers(user)){
-                    mainPublicOptions();
-                }
-                else {
-                    mainPrivateOptions();
-                }
+                mainPrivateOptions();
             }
         }
 

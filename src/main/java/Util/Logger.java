@@ -143,5 +143,5 @@ public class Logger {
         log("User with username: \"" + username + "\" and ID: \"" + userID + "\" deleted a notification.");
     }
 
-    
+
 }
