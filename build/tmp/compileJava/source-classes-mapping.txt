@@ -21,32 +21,25 @@ Util/CLI.java
  Util.CLI
 Models/Notifications/NotifType/RequestNotification.java
  Models.Notifications.NotifType.RequestNotification
-UI/SignUp.java
- UI.SignUp
+Models/User.java
+ Models.User
+ Models.User$LastSeenType
+ Models.User$UserBuilder
 Models/ChatLogic.java
  Models.ChatLogic
 Models/Notifications/NotifLogic.java
  Models.Notifications.NotifLogic
 Models/Notifications/NotifType/UnfollowNotification.java
  Models.Notifications.NotifType.UnfollowNotification
-Main.java
- Main
+Models/Notifications/NotifType/FollowNotification.java
+ Models.Notifications.NotifType.FollowNotification
 Models/UsersListLogic.java
  Models.UsersListLogic
 Models/Notifications/Notification.java
  Models.Notifications.Notification
  Models.Notifications.Notification$NotifType
-Models/TweetLogic.java
- Models.TweetLogic
 Models/ChatRoom.java
  Models.ChatRoom
-Models/Tweet.java
- Models.Tweet
- Models.Tweet$TweetBuilder
-UI/Page.java
- UI.Page
-Util/Logger.java
- Util.Logger
 UI/Explore.java
  UI.Explore
 UI/Search.java
@@ -59,25 +52,33 @@ UI/OthersProfile.java
  UI.OthersProfile
 UI/SelfProfile.java
  UI.SelfProfile
+UI/SignUp.java
+ UI.SignUp
 UI/Profile.java
  UI.Profile
 UI/Settings.java
  UI.Settings
 UI/SignIn.java
  UI.SignIn
+Main.java
+ Main
 UI/NotificationsPage.java
  UI.NotificationsPage
 UI/Timeline.java
  UI.Timeline
-Models/User.java
- Models.User
- Models.User$LastSeenType
- Models.User$UserBuilder
+Models/TweetLogic.java
+ Models.TweetLogic
 Models/UserLogic.java
  Models.UserLogic
+Models/Tweet.java
+ Models.Tweet
+ Models.Tweet$TweetBuilder
+ Models.Tweet$TweetType
 UI/MainMenu.java
  UI.MainMenu
-Models/Notifications/NotifType/FollowNotification.java
- Models.Notifications.NotifType.FollowNotification
+UI/Page.java
+ UI.Page
+Util/Logger.java
+ Util.Logger
 UI/FirstPage.java
  UI.FirstPage

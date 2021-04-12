@@ -143,5 +143,24 @@ public class Logger {
         log("User with username: \"" + username + "\" and ID: \"" + userID + "\" deleted a notification.");
     }
 
+    public void like(String username , String userID , String tweetID , boolean liked){
+        if (liked){
+            log("User with username: \"" + username + "\" and ID: \"" + userID + "\" liked tweet with ID: \"" + tweetID +"\".");
+        }
+        else {
+            log("User with username: \"" + username + "\" and ID: \"" + userID + "\" removed the like for tweet with ID: \"" + tweetID +"\".");
+        }
+    }
 
+    public void retweet(String username , String userID , String tweetID , String retweetID){
+        log("User with username: \"" + username + "\" and ID: \"" + userID + "\" retweeted tweet with ID: \"" + tweetID +"\".(Retweet ID is: \""+ retweetID + "\")");
+    }
+
+    public void reportTweet(String username , String userID , String tweetID){
+        log("User with username: \"" + username + "\" and ID: \"" + userID + "\" reported tweet with ID: \"" + tweetID +"\".");
+    }
+
+    public void comment(String username , String userID , String tweetID , String commentID){
+        log("User with username: \"" + username + "\" and ID: \"" + userID + "\" retweeted tweet with ID: \"" + tweetID +"\".(Comment ID is: \""+ commentID + "\")");
+    }
 }

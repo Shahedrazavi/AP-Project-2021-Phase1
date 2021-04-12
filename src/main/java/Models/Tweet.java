@@ -28,7 +28,15 @@ public class Tweet implements Memo {
     private LocalDateTime retweetDate;
     private boolean isRetweet;
 
-    public MemoType memoType;
+    private MemoType memoType;
+
+    private TweetType tweetType;
+
+    public enum TweetType{
+        Tweet,
+        Comment,
+        Retweet
+    }
 
     public Tweet(String ID, String text, LocalDateTime date,
                  LinkedList<String> likes, IntHolder likeNumber,
@@ -36,7 +44,7 @@ public class Tweet implements Memo {
                  LinkedList<String> spamReports, IntHolder spamReportNumber,
                  String userID,
                  String ownerID, String parentTweetID, LinkedList<String> subTweets,
-                 String sourceTweetID, LocalDateTime retweetDate, boolean isRetweeted) {
+                 String sourceTweetID, LocalDateTime retweetDate, boolean isRetweeted , TweetType tweetType) {
         this.ID = ID;
         this.text = text;
         this.date = date;
@@ -54,6 +62,8 @@ public class Tweet implements Memo {
         this.retweetDate = retweetDate;
         this.isRetweet = isRetweeted;
         this.memoType = MemoType.tweet;
+        this.tweetType = tweetType;
+
     }
 
     static class TweetBuilder{
@@ -76,6 +86,8 @@ public class Tweet implements Memo {
         private String sourceTweetID;
         private LocalDateTime retweetDate;
         private boolean isRetweet;
+
+        private TweetType tweetType;
 
         public TweetBuilder setID(String ID) {
             this.ID = ID;
@@ -161,6 +173,11 @@ public class Tweet implements Memo {
             return isRetweet;
         }
 
+        public TweetBuilder setTweetType(TweetType tweetType) {
+            this.tweetType = tweetType;
+            return this;
+        }
+
         public Tweet build(){
             return new Tweet(ID, text, date,
                     likes, likeNumber,
@@ -168,7 +185,7 @@ public class Tweet implements Memo {
                     spamReports, spamReportNumber,
                     userID,
                     ownerID, parentTweetID, subTweets,
-                    sourceTweetID, retweetDate, isRetweet);
+                    sourceTweetID, retweetDate, isRetweet , tweetType);
 //            return new tweet(ID, text, likes, likeNumber, retweets, retweetNumber, userID, ownerID, parentTweetID, isRetweet);
         }
     }
@@ -178,7 +195,6 @@ public class Tweet implements Memo {
     public MemoType getMemoType() {
         return MemoType.tweet;
     }
-
 
 
     /**
@@ -315,6 +331,9 @@ public class Tweet implements Memo {
         isRetweet = retweet;
     }
 
+    public TweetType getTweetType() {
+        return tweetType;
+    }
 
     /**
      * For Liking and Disliking
@@ -392,6 +411,13 @@ public class Tweet implements Memo {
     }
 
 
+    public boolean hasLiked(String likedID){
+        return getLikes().contains(likedID);
+    }
+
+    public boolean hasRetweeted(String retweetedID){
+        return getRetweets().contains(retweetedID);
+    }
 
 
 

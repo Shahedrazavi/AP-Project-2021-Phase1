@@ -160,3 +160,6 @@
 2021-04-12T12:31:33.939426800: Application closed.
 2021-04-12T17:32:36.053614: Application started.
 2021-04-12T17:32:40.954945600: Application closed.
+2021-04-12T20:34:00.735076600: Application started.
+2021-04-12T20:34:10.631355500: User with username: "jelighe" and ID: "1" logged in.
+2021-04-12T20:35:22.392977600: User with username: "jelighe" and ID: "1" made a new Memo.

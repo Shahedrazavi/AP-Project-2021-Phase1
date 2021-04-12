@@ -455,7 +455,30 @@ public class UserLogic {
         }
     }
 
+    public LinkedList<Tweet> getTweetComments(Tweet tweet){
+        LinkedList<Tweet> comments = new LinkedList<>();
+        for (String commentID : tweet.getSubTweets()){
+            Tweet comment = getTweetLogic().IDtoTweet(commentID);
+            comments.add(comment);
+        }
 
+        return comments;
+    }
+
+    public LinkedList<Tweet> getAllFollowingsTweets(User user){
+        LinkedList<Tweet> tweets = new LinkedList<>();
+        for (String followingID : user.getFollowing()){
+
+            LinkedList<Tweet> followingTweets = getTweetLogic().getUserTweets(followingID);
+
+            for (Tweet tweet : followingTweets){
+                if (!tweets.contains(tweet)){
+                    tweets.add(tweet);
+                }
+            }
+        }
+        return tweets;
+    }
 
     @Override
     public String toString() {

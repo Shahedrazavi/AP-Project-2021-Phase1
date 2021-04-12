@@ -30,6 +30,16 @@ public class TweetLogic {
         return tweets;
     }
 
+    public LinkedList<Tweet> getUserTweets(String userID){
+        LinkedList<Tweet> list = new LinkedList<>();
+        for (Tweet tweet : tweets){
+            if (tweet.getUserID().equals(userID)){
+                list.add(tweet);
+            }
+        }
+        return list;
+    }
+
     public void addToAllTweets(Tweet tweet){
         getAllTweets().add(tweet);
     }
@@ -131,6 +141,7 @@ public class TweetLogic {
     public Tweet newTweet(String text, User user){
         return newRawTweet(text, user)
                 .setParentTweetID("0")
+                .setTweetType(Tweet.TweetType.Tweet)
                 .build();
 //        addToAllTweets(tweet);
      }
@@ -141,6 +152,7 @@ public class TweetLogic {
     public Tweet newSubTweet(String text, User user, Tweet parent){
         return newRawTweet(text, user)
                 .setParentTweetID(parent.getID())
+                .setTweetType(Tweet.TweetType.Comment)
                 .build();
 //        addToAllTweets(tweet);
     }
@@ -155,6 +167,7 @@ public class TweetLogic {
                 .setSpamReports(sourceTweet.getSpamReports()).setSpamReportNumber(sourceTweet.getSpamReportNumber())
                 .setOwnerID(sourceTweet.getOwnerID()).setParentTweetID(sourceTweet.getParentTweetID()).setSubTweets(sourceTweet.getSubTweets())
                 .setSourceTweetID(sourceTweet.getSourceTweetID()).setRetweet(true)
+                .setTweetType(Tweet.TweetType.Retweet)
                 .build();
 //        addToAllTweets(tweet);
     }
@@ -174,7 +187,7 @@ public class TweetLogic {
         return subTweet;
     }
 
-    public Tweet reTweet(Tweet sourceTweet, User user){
+    public Tweet retweet(Tweet sourceTweet, User user){
         Tweet retweet = newRetweet(sourceTweet, user);
         addToAllTweets(retweet);
         user.addToTweets(retweet.getID());
